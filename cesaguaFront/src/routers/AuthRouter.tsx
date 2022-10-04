@@ -1,6 +1,7 @@
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-import { ProtectedRoute } from "../assets/utils/ProtectedRoute";
+import { ProtectedRoute } from "../utils/ProtectedRoute";
 import IndexPage from "../pages/general/IndexPage/IndexPage";
+import PageTemplate from "../shared/Template/PageTemplate";
 
 const AuthRouter = () => {
   /**
@@ -17,8 +18,7 @@ const AuthRouter = () => {
    */
   const PrivateRoutes = () => (
     <Route
-      path="/"
-      element={
+      path="/auth"element={
         <>
           <h1>Esto es privado</h1>
         </>
@@ -29,13 +29,17 @@ const AuthRouter = () => {
   return (
     <Router>
       <Routes>
-        {PublicRoutes()}
+        <Route path="/" element={<PageTemplate/>}>
 
-        <Route path="/" element={<ProtectedRoute></ProtectedRoute>}>
-          {PrivateRoutes()}
+          {PublicRoutes()}
+
+          <Route path="/" element={<ProtectedRoute></ProtectedRoute>}>
+            {PrivateRoutes()}
+          </Route>
+
+          <Route path="*" element={<p>There's nothing here: 404!</p>} />
+
         </Route>
-
-        <Route path="*" element={<p>There's nothing here: 404!</p>} />
       </Routes>
     </Router>
   );
