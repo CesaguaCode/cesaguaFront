@@ -1,0 +1,9 @@
+@import "_icons-setup";
+
+.i__ {
+
+  &delete::after {
+    --image-url:url(../icons/delete.svg);
+  }
+
+}
