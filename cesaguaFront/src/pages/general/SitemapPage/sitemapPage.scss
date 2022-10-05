@@ -1,0 +1,86 @@
+.tier-container{
+  display: flex;
+  gap: 1em;
+}
+
+.map-card {
+  display: block;
+  background-color: var(--clr-logo-blue);
+  text-align: center;
+  width: 10vw;
+  min-width: 13em;
+  padding: 1em;
+  border-radius: 1em;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem;
+  box-shadow: 0em .4em 0.8em rgb(116, 116, 116);
+  transition: scale .2s;
+  color: var(--clr-black);
+}
+
+.map-tier1__container {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 75vh;
+  padding: 4em;
+
+  &>.map-card{
+    height: 10em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.page-group{
+  &:nth-child(even) > .map-card {
+    background-color: var(--clr-logo-orange);
+  }
+
+  &:nth-child(odd) > .map-card {
+    background-color: var(--clr-logo-green);
+  }
+}
+
+.map-card:hover{
+  scale: 1.05;
+}
+
+.map-card:active{
+  scale: 0.95;
+}
+
+.map-tier2__container {
+  margin-top: 3em;
+  width: 80%;
+  
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  &:first-child.map-card:nth-child(odd) {
+    background-color: var(--clr-logo-green);
+  }
+
+  &:first-child .map-card:nth-child(even) {
+    background-color: var(--clr-logo-orange);
+  }
+}
+
+.map-tier3__container {
+  flex-direction: column;
+  margin-top: 1em;
+
+  .map-card{
+    display: flex;
+    background-color: white;
+    place-items: center;
+    gap: 1em;
+  }
+}
+
+.card-icon{
+  font-size: 2.5rem;
+}

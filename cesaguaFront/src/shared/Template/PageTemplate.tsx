@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
-import Main from "../Main/Main";
+import Footer from "../Footer/Index";
+import Header from "../Header/Index";
+import Main from "../Main/Index";
 
 interface props {
   children?: JSX.Element;

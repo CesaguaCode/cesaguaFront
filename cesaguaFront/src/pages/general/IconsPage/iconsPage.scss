@@ -1,0 +1,26 @@
+.icons-container{
+    padding: 0 10%;
+   
+    margin-top: 5em;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.icon-card{
+    font-size: 2em;
+    display: flex;
+    gap: 1em;
+    font-weight: bold;
+    background-color: var(--clr-logo-blue);
+    padding: 1em;
+    width: 8em;
+    border-radius: .2em;
+    place-items: center;
+
+    i{
+        font-size: 1.2em;
+    }
+}

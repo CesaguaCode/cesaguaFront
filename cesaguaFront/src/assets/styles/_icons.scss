@@ -2,8 +2,44 @@
 
 .i__ {
 
-  &delete::after {
-    --image-url:url(../icons/delete.svg);
+  &news::after{
+    --image-url: url(../icons/news.svg);
+  }
+
+  &milestones::after {
+    --image-url: url(../icons/milestones.svg);
+  }
+
+  &services::after {
+    --image-url: url(../icons/services.svg);
+  }
+
+  &organization::after {
+    --image-url: url(../icons/organization.svg);
+  }
+
+  &service::after {
+    --image-url: url(../icons/service.svg);
+  }
+
+  &outstanding::after {
+    --image-url: url(../icons/outstanding.svg);
+  }
+
+  &influence::after {
+    --image-url: url(../icons/influence.svg);
+  }
+
+  &contact::after {
+    --image-url: url(../icons/contact.svg);
+  }
+
+  &index::after {
+    --image-url: url(../icons/index.svg);
+  }
+
+  &star::after {
+    --image-url: url(../icons/star.svg);
   }
 
 }

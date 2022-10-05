@@ -1,7 +1,10 @@
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import { ProtectedRoute } from "../utils/ProtectedRoute";
-import IndexPage from "../pages/general/IndexPage/IndexPage";
+import IndexPage from "../pages/general/IndexPage/Index";
 import PageTemplate from "../shared/Template/PageTemplate";
+import SitemapPage from "../pages/general/SitemapPage/Index";
+import IconsPage from "../pages/general/IconsPage/Index";
+import MilestonesListPage from "../pages/milestones/MilestonesListPage/Index";
 
 const AuthRouter = () => {
   /**
@@ -9,7 +12,16 @@ const AuthRouter = () => {
    * @returns Public routes of the app
    */
   const PublicRoutes = () => (
+    <>
     <Route path="/" element={<IndexPage></IndexPage>}></Route>
+    <Route path="/sitemap" element={<SitemapPage></SitemapPage>}></Route>
+    <Route path="/milestones">
+      <Route path="/milestones" element={<MilestonesListPage />}></Route>
+    </Route>
+
+    // TODO: Eliminar en produccion
+    <Route path="/icons" element={<IconsPage></IconsPage>}></Route>
+    </>
   );
 
   /**
@@ -33,7 +45,7 @@ const AuthRouter = () => {
 
           {PublicRoutes()}
 
-          <Route path="/" element={<ProtectedRoute></ProtectedRoute>}>
+          <Route path="/" element={<ProtectedRoute/>}>
             {PrivateRoutes()}
           </Route>
 

@@ -1,0 +1,142 @@
+.milestones-title {
+ 
+  text-align: center;
+  font-size: 2em;
+  padding: 1rem;
+}
+
+.milestones-section {
+  --milestone-color: var(--clr-logo-blue);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  padding: 3em;
+  gap: 5em;
+  position: relative;
+}
+
+.milestones-section:nth-child(odd) {
+  background-color: var(--clr-white);
+
+  :first-child {
+    order: 2;
+  }
+}
+
+.milestones-section__image {
+  border-radius: 1em;
+  max-width: 400px;
+}
+
+.milestones-section:after {
+  content: "";
+  width: 40%;
+  height: 100%;
+  left: 10%;
+  border-right: 2px solid var(--clr-light-gray);
+  position: absolute;
+}
+
+.milestones-section:first-of-type::after {
+  height: 50%;
+  bottom: 0%;
+}
+
+.milestones-section:last-of-type::after {
+  height: 50%;
+  top: 0%;
+}
+
+.milestones-section::before {
+  content: "";
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  left: calc(50% - 1.3em);
+  background-color: var(--clr-white);
+
+  position: absolute;
+  background-image: url(../../../assets/icons/star.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  z-index: 10;
+  border: 5px solid var( --milestone-color);
+}
+
+.milestones-section:nth-of-type(3n + 3) {
+    --milestone-color:  var(--clr-logo-blue);
+}
+
+.milestones-section:nth-of-type(3n + 2) {
+    --milestone-color:  var(--clr-logo-green);
+}
+
+.milestones-section:nth-of-type(3n + 1) {
+    --milestone-color:  var(--clr-logo-orange);
+}
+
+.milestones-details {
+  max-width: 600px;
+
+}
+
+.milestones-details__title {
+  font-size: 2em;
+  margin: 1rem 0;
+  color: var(--clr-dark-gray);
+  border-bottom: 4px solid var(--milestone-color);
+}
+
+.milestones-details__date{
+    margin-bottom: 2rem;
+    color: var(--clr-dark-gray);
+}
+
+@media screen and (max-width: 600px) {
+  .milestones-section {
+    grid-template-columns: 1fr;
+    gap: 3em;
+  }
+
+  .milestones-section:nth-child(odd) :first-child {
+    order: initial;
+  }
+
+  .milestones-section::after {
+    border: transparent;
+  }
+  .milestones-section::before {
+    display: none;
+  }
+
+  .milestones-section:nth-child(odd) .miletones-details__header {
+    position: relative;
+    padding: 0 4em;
+  }
+
+  .milestones-section .miletones-details__header::before {
+    content: "";
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+
+    background-color: var(--clr-white);
+
+    position: absolute;
+    left: 0;
+    background-image: url(../../../assets/icons/star.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    z-index: 10;
+    border: 5px solid var( --milestone-color);
+  }
+  .milestones-section:nth-child(even) .miletones-details__header::before {
+    left: 80%;
+  }
+
+  .milestones-details__title {
+    max-width: 80%;
+  }
+}

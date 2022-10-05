@@ -1,14 +1,9 @@
 import logo from "../../assets/images/Logo.svg";
 import "./header.scss";
 
-const Header = () => {
-  const links = [
-    { link: "#", text: "Servicios" },
-    { link: "#", text: "Noticias" },
-    { link: "#", text: "Mapa de sitio" },
-    { link: "#", text: "Contacto" },
-  ];
+import links from "./links.json";
 
+const Header = () => {
   return (
     <header className="header">
       <div className="header-content">
@@ -22,11 +17,9 @@ const Header = () => {
         </section>
 
         <nav className="header-nav">
-          {links.map(({ link, text }) => (
-            <a key={text} className="header-nav__link" href={link}>
-              {text}
-            </a>
-          ))}
+          {links.map(({ link, text }) => 
+            <a key={text} className="header-nav__link" href={link}> {text} </a>
+          )}
         </nav>
       </div>
     </header>

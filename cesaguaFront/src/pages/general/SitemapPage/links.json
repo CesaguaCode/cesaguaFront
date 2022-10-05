@@ -1,0 +1,34 @@
+{
+  "title": "Inicio",
+  "icon": "i__index",
+  "childs": [
+    {
+      "title": "Noticias",
+      "icon": "i__news"
+    },
+    {
+      "title": "Hitos",
+      "icon": "i__milestones"
+    },
+    {
+      "title": "Influencia",
+      "icon": "i__influence"
+    },
+    {
+      "title": "Organizacion",
+      "icon": "i__organization"
+    },
+    {
+      "title": "Contáctenos",
+      "icon": "i__contact"
+    },
+    {
+      "title": "Servicios",
+      "icon": "i__services",
+      "childs": [
+        { "title": "Servicio1", "icon": "i__service" },
+        { "title": "Servicio2", "icon": "i__service" }
+      ]
+    }
+  ]
+}
