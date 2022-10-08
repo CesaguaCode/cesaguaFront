@@ -5,12 +5,14 @@ export class MilestoneService {
 
   public async getAll() {
     const request = await axios.get(this.URL).then(({ data }) => data.data);
-    return request[0];
+    console.log(request);
+    
+    return request;
   }
 
   public async delete(id: number) {
     const config = {
-      headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoIjp7InJvbCI6M30sImlhdCI6MTY2NTE4MzE1OSwiZXhwIjoxNjY1MjE5MTU5fQ.aUapKIhreD9AbJHEiJ5OIt4-3NXxv-kMFH7yBV0ys9c` },
+      headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoIjp7InJvbCI6MywiaWQiOjF9LCJpYXQiOjE2NjUyNDI2MjEsImV4cCI6MTY2NTI3ODYyMX0.AGsl3cjsEofudgcLHHfECP2vJFMbWKg19YqVHuAZMak` },
     };
 
     return await axios.delete(`${this.URL}/${id}`, config);

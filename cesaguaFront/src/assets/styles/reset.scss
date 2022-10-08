@@ -2,6 +2,7 @@
 @import "_colors.scss";
 @import "_icons.scss";
 @import "_scroll.scss";
+@import "_swal.scss";
 
 :where(*, *:after, *:before) {
   box-sizing: border-box;
@@ -18,6 +19,7 @@ body {
   background-color: var(--clr-bg-main);
   font-size: clamp(12px, 2vw, 14px);
   color: var(--clr-black);
+  overflow-x: hidden;
 }
 
 img {

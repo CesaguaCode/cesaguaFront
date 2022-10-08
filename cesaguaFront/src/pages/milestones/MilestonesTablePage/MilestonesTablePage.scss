@@ -1,39 +1,7 @@
-.add__button {
-  background-color: var(--clr-logo-green);
-  padding: 1em;
-  border-radius: 0.5em;
-  box-shadow: 0.2em 0.4em 0 var(--clr-dark-gray);
-  color: white;
-  transition: translate 0.2s, box-shadow 0.2s;
-
-  &:active {
-    translate: 0.2em 0.4em;
-    box-shadow: 0em 0em 0 var(--clr-dark-gray);
-  }
-}
 
 .milestones-table {
   margin: 0 10%;
   color: white;
-}
-
-.milestones-table__head {
-  background-color: var(--clr-logo-blue);
-  padding: 1em 2em;
-  text-align: center;
-  margin-top: 2em;
-}
-
-.milestones-inputs__container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1em;
-}
-
-.input-group {
-  color: var(--clr-black);
-  position: relative;
 }
 
 .input-group label {
@@ -47,39 +15,13 @@
   }
 }
 
-.milestones-inputs__search {
-  padding: 0.5em;
-  outline: none;
-  border: transparent;
-  user-select: none;
-}
-
-.milestones-inputs__search-label{
-  user-select: none;
-  cursor: text;
-}
-
-
-.milestones-inputs__search + .milestones-inputs__search-label {
-  border: transparent;
-  transition: color 0.5s, scale 0.5s, translate 0.5s;
-}
-
-.milestones-inputs__search:placeholder-shown + .milestones-inputs__search-label {
-  translate: 0.5em 0.5em;
-}
-
-.milestones-inputs__search:focus + .milestones-inputs__search-label,
-.milestones-inputs__search:not(:placeholder-shown) + .milestones-inputs__search-label {
-  translate: 0em -1.5em;
-  scale: 0.9;
-  color: var(--clr-white);
-}
 
 .milestones-table__body {
   padding: 1em 0;
   color: var(--clr-black);
   background-color: var(--clr-white);
+  max-height: 60vh;
+  overflow: auto;
 }
 
 .milestones-card {
@@ -140,20 +82,12 @@
   margin-bottom: 0;
   color: var(--clr-dark-gray);
 }
+
 .milestones-card__date{
   margin-top: 0;
   color: var(--clr-dark-gray);
 }
+
 .milestones-card__detail{
   margin-bottom: 2em;
 }
-
-.confirm-alert,.cancel-alert{
-  color: white !important;
-  outline: none!important;
-}
-
-.confirm-alert:focus,.cancel-alert:focus{
-  box-shadow: none!important;
-}
-

@@ -1,8 +1,10 @@
 .milestones-title {
- 
   text-align: center;
-  font-size: 2em;
+  font-size: 2.5em;
+  color: var(--clr-dark-gray);
   padding: 1rem;
+
+  animation: fadeInDown 1s;
 }
 
 .milestones-section {
@@ -13,15 +15,23 @@
   padding: 3em;
   gap: 5em;
   position: relative;
+
+}
+
+.milestones-section:nth-child(even){
+  animation: fadeInLeft 1s;
 }
 
 .milestones-section:nth-child(odd) {
   background-color: var(--clr-white);
+  animation: fadeInRight 1s;
 
   :first-child {
     order: 2;
   }
 }
+
+
 
 .milestones-section__image {
   border-radius: 1em;

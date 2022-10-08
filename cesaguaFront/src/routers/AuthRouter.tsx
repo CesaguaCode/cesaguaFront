@@ -8,6 +8,8 @@ import IconsPage from "../pages/general/IconsPage/Index";
 import MilestonesListPage from "../pages/milestones/MilestonesListPage/Index";
 import MilestonesTablePage from "../pages/milestones/MilestonesTablePage";
 import PinsListPage from "../pages/pins/PinsListPage/PinsListPage";
+import ServicesListPage from "../pages/services/ServicesListPage";
+import ServiceDetailPage from "../pages/services/ServicesDetailPage";
 
 const AuthRouter = () => {
   /**
@@ -21,6 +23,8 @@ const AuthRouter = () => {
 
       <Route path="/milestones" element={<MilestonesListPage />}></Route>
       <Route path="/pins" element={<PinsListPage />}></Route>
+      <Route path="/services" element={<ServicesListPage />}></Route>
+      <Route path="/services/*" element={<ServiceDetailPage />}></Route>
 
       // TODO: Eliminar en produccion
       <Route path="/icons" element={<IconsPage></IconsPage>}></Route>

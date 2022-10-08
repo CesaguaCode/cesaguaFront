@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import AlertSystem from "../../../utils/AlertSystem";
 import MilestoneCard from "./components/MilestoneCard";
-import TableHeader from "./components/TableHeader";
+import TableHeader from "../../../shared/TableHeader/TableHeader";
 import "./MilestonesTablePage.scss";
-import "animate.css";
 import milestoneRequest from "./request.json";
 import { MilestoneService } from "../MilsetoneService";
 
@@ -14,13 +13,13 @@ const MilestonesTablePage = () => {
   const alerts = AlertSystem();
 
   const service: MilestoneService = new MilestoneService();
-
+/*
   useEffect(() => {
     service.getAll().then((response) => {
       allMilestones.current = response;
       setMilestones(response);
     });
-  }, []);
+  }, []);*/
 
   useEffect(() => {
     if (allMilestones.current) {

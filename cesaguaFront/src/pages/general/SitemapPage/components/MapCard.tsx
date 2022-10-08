@@ -11,7 +11,7 @@ const MapCard = ({title, icon, link}:props) => {
   console.log(link);
   
   return (
-    <Link to={link} className="map-card">
+    <Link to={link} className="map-card animate__animated animate__fadeInDown">
       <i className={`ico ${icon} card-icon`} />
       <h1>{title}</h1>
     </Link>

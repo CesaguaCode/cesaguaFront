@@ -1,5 +1,7 @@
 import { ChangeEventHandler, MouseEventHandler } from "react";
 
+import "./tableHeader.scss"
+
 interface props {
   title: string;
   search: string;
@@ -9,19 +11,19 @@ interface props {
 
 const TableHeader = ({ title, search, handleSearch, handleAdd }: props) => {
   return (
-    <header className="milestones-table__head">
-      <h1>Gestión de {title}</h1>
-      <div className="milestones-inputs__container">
+    <header className="table-header">
+      <h1 className="table-header__title">Gestión de {title}</h1>
+      <div className="table-header__inputs-container">
         <div className="input-group">
           <input
             id="search"
             type="text"
-            className="milestones-inputs__search"
+            className="table-header__inputs-search"
             placeholder=" "
             value={search}
             onChange={handleSearch}
           />
-          <label htmlFor="search" className="milestones-inputs__search-label">
+          <label htmlFor="search" className="table-header__inputs-search-label">
             <span>
               <i className="ico i__search" /> Buscar
             </span>
@@ -29,7 +31,6 @@ const TableHeader = ({ title, search, handleSearch, handleAdd }: props) => {
         </div>
 
         <button className="btn add__button" onClick={handleAdd}>
-          {" "}
           <i className="ico i__add" />
           Agregar
         </button>

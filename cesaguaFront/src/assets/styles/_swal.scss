@@ -1,0 +1,18 @@
+.confirm-alert {
+  background-color: var(--clr-logo-green) !important;
+}
+
+.cancel-alert {
+  background-color: var(--clr-danger) !important;
+}
+
+.confirm-alert,
+.cancel-alert {
+  color: white !important;
+  outline: none !important;
+}
+
+.confirm-alert:focus,
+.cancel-alert:focus {
+  box-shadow: none !important;
+}

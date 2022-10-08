@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 interface props {
   title: string;
@@ -9,7 +9,7 @@ interface props {
 
 const MilestoneSection = ({ title, date, image, description }: props) => {
   return (
-    <section className="milestones-section">
+    <section className={`milestones-section`}>
 
       <div className="milestones-section__image-container">
         <img

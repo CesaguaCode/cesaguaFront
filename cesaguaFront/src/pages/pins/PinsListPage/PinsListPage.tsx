@@ -37,7 +37,7 @@ const PinsListPage = () => {
   return (
     <section className="pins-table">
       <header className="pins-table__head">
-        <h1>Mapa de influencia</h1>
+        <h1 className="pins-table__title">Mapa de influencia</h1>
         <div className="pins-inputs__container">
           <div className="input-group pins-input-group">
             <input

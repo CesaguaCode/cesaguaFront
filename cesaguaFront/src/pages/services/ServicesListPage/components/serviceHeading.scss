@@ -1,0 +1,45 @@
+.services-heading{
+    background-color: var(--clr-logo-green);
+    color: var(--clr-white);
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    animation: fadeInDown 1s;
+}
+
+.services-heading__content{
+    width: 80%;
+    min-width: 270px;
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+    
+    place-items: center; 
+}
+
+.services-heading__title{
+    font-size: 2em;
+    width: clamp(8em, 45%, 20em);
+    margin-right: auto;
+}
+
+.services-heading__detail{
+    width: clamp(18em, 45%, 35em);
+    margin-left: auto;
+}
+
+@media screen and (max-width: 700px) {
+
+    .services-heading{
+        padding: 1.5em 1em;
+    }
+
+    .services-heading__title,
+    .services-heading__detail{
+        width: 80%;
+        text-align: center;
+        min-width: 250px;
+        margin: auto;
+    }
+    
+}
