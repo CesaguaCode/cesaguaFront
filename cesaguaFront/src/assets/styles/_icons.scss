@@ -42,4 +42,29 @@
     --image-url: url(../icons/star.svg);
   }
 
+  &add::after {
+    --image-url: url(../icons/add.svg);
+  }
+
+  &search::after {
+    --image-url: url(../icons/search.svg);
+  }
+
+  &edit::after {
+    --image-url: url(../icons/edit.svg);
+  }
+
+  &delete::after {
+    --image-url: url(../icons/delete.svg);
+  }
+
+  &close::after {
+    --image-url: url(../icons/close.svg);
+  }
+
+  &clear::after {
+    --image-url: url(../icons/clear.svg);
+  }
+
+
 }

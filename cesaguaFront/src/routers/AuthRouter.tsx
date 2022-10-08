@@ -4,7 +4,10 @@ import IndexPage from "../pages/general/IndexPage/Index";
 import PageTemplate from "../shared/Template/PageTemplate";
 import SitemapPage from "../pages/general/SitemapPage/Index";
 import IconsPage from "../pages/general/IconsPage/Index";
+
 import MilestonesListPage from "../pages/milestones/MilestonesListPage/Index";
+import MilestonesTablePage from "../pages/milestones/MilestonesTablePage";
+import PinsListPage from "../pages/pins/PinsListPage/PinsListPage";
 
 const AuthRouter = () => {
   /**
@@ -13,14 +16,14 @@ const AuthRouter = () => {
    */
   const PublicRoutes = () => (
     <>
-    <Route path="/" element={<IndexPage></IndexPage>}></Route>
-    <Route path="/sitemap" element={<SitemapPage></SitemapPage>}></Route>
-    <Route path="/milestones">
-      <Route path="/milestones" element={<MilestonesListPage />}></Route>
-    </Route>
+      <Route path="/" element={<IndexPage></IndexPage>}></Route>
+      <Route path="/sitemap" element={<SitemapPage></SitemapPage>}></Route>
 
-    // TODO: Eliminar en produccion
-    <Route path="/icons" element={<IconsPage></IconsPage>}></Route>
+      <Route path="/milestones" element={<MilestonesListPage />}></Route>
+      <Route path="/pins" element={<PinsListPage />}></Route>
+
+      // TODO: Eliminar en produccion
+      <Route path="/icons" element={<IconsPage></IconsPage>}></Route>
     </>
   );
 
@@ -29,28 +32,23 @@ const AuthRouter = () => {
    * @returns Private routes of the app
    */
   const PrivateRoutes = () => (
-    <Route
-      path="/auth"element={
-        <>
-          <h1>Esto es privado</h1>
-        </>
-      }
-    ></Route>
+    <>
+      <Route path="/auth" element={<h1>Privado</h1>}></Route>
+      <Route path="/milestones/crud" element={<MilestonesTablePage />}></Route>
+    </>
   );
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<PageTemplate/>}>
-
+        <Route path="/" element={<PageTemplate />}>
           {PublicRoutes()}
 
-          <Route path="/" element={<ProtectedRoute/>}>
+          <Route path="/" element={<ProtectedRoute />}>
             {PrivateRoutes()}
           </Route>
 
           <Route path="*" element={<p>There's nothing here: 404!</p>} />
-
         </Route>
       </Routes>
     </Router>

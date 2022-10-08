@@ -1,0 +1,18 @@
+[
+    {
+      "id": 1,
+      "position": [10.187770138513615, -83.74923594313657],
+      "name": "Asada los Patitos",
+      "province": "Limon",
+      "canton": "Pococí",
+      "district": "Gúapiles"
+    },
+    {
+      "id": 2,
+      "position": [10.187770138513615, -82.74923594313657],
+      "name": "Asada los Ratitos",
+      "province": "Limon",
+      "canton": "Pococí",
+      "district": "Gúapiles"
+    }
+  ]

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Ipsum",
+    "date": "Setiembre 2022",
+    "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore nesciunt repellat quaerat officia mollitia a enim aliquid, maxime ipsum necessitatibus! Corporis est consectetur a veniam similique porro totam illum dolorum.",
+    "image": "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wyTq?ver=c8e5"
+  },
+  {
+    "id": 2,
+    "title": "Lorem",
+    "date": "Setiembre 2022",
+    "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore nesciunt repellat quaerat officia mollitia a enim aliquid, maxime ipsum necessitatibus! Corporis est consectetur a veniam similique porro totam illum dolorum.",
+    "image": "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wyTq?ver=c8e5"
+  }
+]

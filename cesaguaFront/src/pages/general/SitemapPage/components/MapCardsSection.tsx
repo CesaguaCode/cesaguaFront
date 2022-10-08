@@ -2,11 +2,12 @@ import { memo } from "react";
 import MapCard from "./MapCard";
 
 const MapCardsSection = ({ links }: any) => {
-
+  console.log(links);
+  
   return (
     <section className="tier-container map-tier3__container">
-      {links.map(({ title, icon }: { title: string; icon: string }) => 
-        <MapCard key={title} title={title} icon={icon}></MapCard>
+      {links.map((link: { title: string; icon: string, link:string }) => 
+        <MapCard key={link.title} {...link}></MapCard>
       )}
     </section>
   );

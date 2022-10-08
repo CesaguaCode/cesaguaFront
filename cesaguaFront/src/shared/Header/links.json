@@ -1,6 +1,6 @@
 [
-  { "link": "#", "text": "Servicios" },
-  { "link": "#", "text": "Noticias" },
-  { "link": "#", "text": "Mapa de sitio" },
-  { "link": "#", "text": "Contacto" }
+  { "link": "/services", "text": "Servicios" },
+  { "link": "/news", "text": "Noticias" },
+  { "link": "/sitemap", "text": "Mapa de sitio" },
+  { "link": "/contact", "text": "Contacto" }
 ]

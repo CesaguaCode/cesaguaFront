@@ -1,17 +1,23 @@
 
 @import "_colors.scss";
 @import "_icons.scss";
+@import "_scroll.scss";
 
 :where(*, *:after, *:before) {
   box-sizing: border-box;
   font-family: sans-serif;
-  font-size: clamp(12px, 2vw, 14px);
-  color: var(--clr-black);
+ 
+}
+
+html {
+  height: 100%;
 }
 
 body {
   margin: 0;
   background-color: var(--clr-bg-main);
+  font-size: clamp(12px, 2vw, 14px);
+  color: var(--clr-black);
 }
 
 img {
@@ -20,6 +26,7 @@ img {
 }
 
 .body-wrapper {
+  height: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

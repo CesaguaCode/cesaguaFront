@@ -1,0 +1,150 @@
+.add__button {
+  background-color: var(--clr-logo-green);
+  padding: 1em;
+  border-radius: 0.5em;
+  box-shadow: 0.2em 0.4em 0 var(--clr-dark-gray);
+  color: white;
+  transition: translate 0.2s, box-shadow 0.2s;
+
+  &:active {
+    translate: 0.2em 0.4em;
+    box-shadow: 0em 0em 0 var(--clr-dark-gray);
+  }
+}
+
+.milestones-table {
+  margin: 0 10%;
+  color: white;
+}
+
+.milestones-table__head {
+  background-color: var(--clr-logo-blue);
+  padding: 1em 2em;
+  text-align: center;
+  margin-top: 2em;
+}
+
+.milestones-inputs__container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.input-group {
+  color: var(--clr-black);
+  position: relative;
+}
+
+.input-group label {
+  position: absolute;
+  left: 0;
+
+  span {
+    display: flex;
+    gap: 0.5em;
+    place-items: center;
+  }
+}
+
+.milestones-inputs__search {
+  padding: 0.5em;
+  outline: none;
+  border: transparent;
+  user-select: none;
+}
+
+.milestones-inputs__search-label{
+  user-select: none;
+  cursor: text;
+}
+
+
+.milestones-inputs__search + .milestones-inputs__search-label {
+  border: transparent;
+  transition: color 0.5s, scale 0.5s, translate 0.5s;
+}
+
+.milestones-inputs__search:placeholder-shown + .milestones-inputs__search-label {
+  translate: 0.5em 0.5em;
+}
+
+.milestones-inputs__search:focus + .milestones-inputs__search-label,
+.milestones-inputs__search:not(:placeholder-shown) + .milestones-inputs__search-label {
+  translate: 0em -1.5em;
+  scale: 0.9;
+  color: var(--clr-white);
+}
+
+.milestones-table__body {
+  padding: 1em 0;
+  color: var(--clr-black);
+  background-color: var(--clr-white);
+}
+
+.milestones-card {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  place-items: center;
+  gap: 1em;
+  background-color: var(--clr-bg-main);
+  margin: 2em;
+  padding: 2em;
+}
+.milestones-card img {
+  width: 20vw;
+  min-width: 150px;
+  max-width: 300px;
+  height: 15vh;
+  min-height: 100px;
+  
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.milestones-card__action-container {
+  display: flex;
+  gap: 1em;
+  margin-left: auto;
+}
+
+.milestones-card__details {
+  max-width: 500px;
+  width: 55vw;
+}
+
+.btn__edit,.btn__delete{
+  padding: 1em;
+  border-radius: .5em;
+  box-shadow: .2em .2em 0 var(--clr-dark-gray);
+  transition: translate 0.2s, box-shadow 0.2s;
+}
+
+.btn__edit:active, .btn__delete:active{
+  translate: 0.2em 0.2em;
+  box-shadow: 0em 0em 0 var(--clr-dark-gray);
+}
+
+.btn__edit{
+  background-color: var(--clr-logo-orange);
+}
+
+.btn__delete{
+  background-color: var(--clr-danger);
+}
+
+
+.milestones-card__title{
+  border-bottom: 1px solid var(--clr-logo-blue);
+  max-width: fit-content;
+  margin-bottom: 0;
+  color: var(--clr-dark-gray);
+}
+.milestones-card__date{
+  margin-top: 0;
+  color: var(--clr-dark-gray);
+}
+.milestones-card__detail{
+  margin-bottom: 2em;
+}

@@ -1,0 +1,141 @@
+
+
+.backdrop {
+  position: fixed;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100%;
+  padding-top: calc(env(safe-area-inset-top) + 20px);
+  top: 0;
+  left: 0;
+  background: rgba(58, 58, 58, 0.3);
+
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.backdrop.open{
+  animation: fadeIn 1s forwards;
+  pointer-events: all;
+}
+
+.backdrop.closed{
+  animation: fadeOut 1s forwards;
+  pointer-events: none;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  border: 0;
+  padding:  1em 2em; 
+  box-shadow: 0 0 1em rgb(0 0 0 / 0.3);
+  background-color: var(--clr-white);
+  color: var(--clr-black);
+  
+  min-width: 260px;
+  width: 60vw;
+  max-width: 400px;
+  min-height: 100px;
+ 
+}
+
+.modal::after {
+  position: absolute;
+  content: "";
+}
+
+.modal__close {
+  position: absolute;
+  right: 0em;
+  top: 0;
+  padding: 0.5em;
+  border-bottom-left-radius: 0.8em;
+  background-color: var(--clr-danger);
+  color: white;
+}
+
+.modal__close:hover > .ico {
+  transform: rotateY(360deg);
+}
+
+.modal.open {
+  animation: entering 1s forwards;
+}
+
+.modal.closed {
+  animation: exiting 1s forwards;
+}
+
+
+
+
+.alert-button__container{
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+.alert-button__container .btn{
+  padding: .5em 1em;
+  color: var(--clr-white);
+  width: 8em;
+  justify-content: center;
+  border-radius: .4em;
+}
+
+.modal-btn__confirm{
+  background-color: var(--clr-logo-green);
+}
+
+.modal-btn__cancel{
+  background-color: var(--clr-danger);
+}
+
+
+@keyframes entering {
+  from {
+    translate: 0 10em;
+    opacity: 0;
+  }
+
+  to {
+    translate: 0 0;
+    opacity: 1;
+  }
+}
+
+
+@keyframes exiting {
+  from {
+    translate: 0 0;
+    opacity: 1;
+  }
+
+  to {
+    translate: 0 10em;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn{
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut{
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

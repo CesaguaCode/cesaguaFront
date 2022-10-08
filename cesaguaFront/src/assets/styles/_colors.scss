@@ -1,15 +1,27 @@
-:root{
+:root {
+  --clr-black: #222222;
+  --clr-white: #ffffff;
 
-    --clr-black:#222222;
-    --clr-white: #ffffff;
+  --clr-danger: #ec117f;
 
-    --clr-light-gray:#afafaf;
-    --clr-dark-gray:#706f6f;
+  --clr-light-gray: #afafaf;
+  --clr-dark-gray: #706f6f;
 
-    --clr-bg-main: #e8e8e8;
+  --clr-bg-main: #e8e8e8;
 
-    --clr-logo-blue:#6baee0;
-    --clr-logo-orange:#f18454;
-    --clr-logo-green:#9abf22;
+  --clr-logo-blue: #6baee0;
+  --clr-logo-orange: #f18454;
+  --clr-logo-green: #9abf22;
+}
 
+
+
+
+.confirm-alert{
+  background-color: var(--clr-logo-green) !important;
+ 
+}
+
+.cancel-alert{
+  background-color: var(--clr-danger) !important;
 }

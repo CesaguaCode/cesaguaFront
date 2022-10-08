@@ -8,5 +8,11 @@
   "outstanding",
   "services",
   "service",
-  "star"
+  "star",
+  "add",
+  "search",
+  "edit",
+  "delete",
+  "close",
+  "clear"
 ]
