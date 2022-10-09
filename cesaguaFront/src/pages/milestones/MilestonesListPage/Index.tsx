@@ -2,7 +2,6 @@ import React from "react";
 import MilestoneSection from "./components/MilestoneSection";
 
 import "./milestonesListPage.scss";
-import "animate.css";
 
 import milestones from "./request.json"
 

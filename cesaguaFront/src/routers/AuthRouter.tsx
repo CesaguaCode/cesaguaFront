@@ -13,6 +13,9 @@ import ServiceDetailPage from "../pages/services/ServicesDetailPage";
 import LoginPage from "../pages/login/LoginPage";
 import RequestRecoverPage from "../pages/login/RequestRecoverPage";
 import ResetPasswordPage from "../pages/login/ResetPasswordPage";
+import AnimatedWaves from "../shared/AnimatedWaves/AnimatedWaves";
+import ServicesTablePage from "../pages/services/ServicesTablePage";
+import Error404Page from "../pages/general/Error404Page";
 
 const AuthRouter = () => {
   /**
@@ -27,12 +30,16 @@ const AuthRouter = () => {
       <Route path="/milestones" element={<MilestonesListPage />}></Route>
       <Route path="/pins" element={<PinsListPage />}></Route>
       <Route path="/services" element={<ServicesListPage />}></Route>
+      <Route path="/services/crud" element={<ServicesTablePage />}></Route>
+      
       <Route path="/services/*" element={<ServiceDetailPage />}></Route>
 
       
-      <Route path="/login" element={<LoginPage />}></Route>
-      <Route path="/recover" element={<RequestRecoverPage />}></Route>
-      <Route path="/reset" element={<ResetPasswordPage />}></Route>
+      <Route path="/" element={<AnimatedWaves />}>
+        <Route path="/login" element={<LoginPage />}></Route>
+        <Route path="/recover" element={<RequestRecoverPage />}></Route>
+        <Route path="/reset" element={<ResetPasswordPage />}></Route>
+      </Route>
 
       // TODO: Eliminar en produccion
       <Route path="/icons" element={<IconsPage></IconsPage>}></Route>
@@ -60,7 +67,7 @@ const AuthRouter = () => {
             {PrivateRoutes()}
           </Route>
 
-          <Route path="*" element={<p>There's nothing here: 404!</p>} />
+          <Route path="*" element={<Error404Page />} />
         </Route>
       </Routes>
     </Router>

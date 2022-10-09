@@ -1,0 +1,63 @@
+.page404-container{
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.page404-detail{
+    text-align: center;
+    margin-top: 4em;
+    animation: fadeInUp 1s;
+}
+
+.page404-img{
+    margin-top: 2rem;
+    height: 65vh;
+    width: 30%;
+    overflow: hidden;
+
+    animation: fadeInUp 1s;
+}
+
+.page404-question{
+
+}
+
+.page404-error{
+font-size: 6em;
+margin: 0;
+color: var(--clr-logo-blue);
+}
+
+.page404-notfound{}
+
+.page404-link{
+    color: var(--clr-logo-blue);
+    text-decoration: underline;
+}
+
+
+@media screen and (max-width:600px) {
+
+    .page404-container{
+        flex-direction: column;
+    }
+
+    .page404-detail{
+        order: 2;
+        margin-top: 0;
+    }
+
+    .page404-img{
+        height: 45%;
+        width: 35%;
+    }
+
+    .page404-error{
+        font-size: 3em;
+    }
+}

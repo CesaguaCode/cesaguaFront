@@ -1,4 +1,121 @@
 .table-header {
+  background-color: var(--clr-white);
+  padding: 1em 2em;
+  text-align: center;
+  margin-top: 2em;
+  box-shadow: 0px 10px 50px 3px var(--clr-light-gray);
+}
+
+.table-header__title {
+  font-size: 2em;
+  margin: 0;
+
+  color: var(--clr-logo-green);
+  border-bottom: 2px solid var(--clr-logo-green);
+  width: max-content;
+  margin: 1em auto;
+}
+
+.table-header__inputs-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.table-header__inputs-container .i__search {
+  position: absolute;
+  left: 0;
+  bottom: 1.5em;
+  transition: color 0.5s;
+}
+
+.input-group {
+  color: var(--clr-black);
+  position: relative;
+}
+
+.input-group .table-header__inputs-search-label {
+  position: absolute;
+  left: 0;
+
+  span {
+    display: flex;
+    gap: 0.5em;
+    place-items: center;
+  }
+}
+
+.table-header__inputs-search {
+  padding: 0.5em 0.5em 0.5em 2em;
+  outline: none;
+  border: transparent;
+  user-select: none;
+  border-bottom: 1px solid var(--clr-black);
+}
+
+.table-header__inputs-search-label {
+  user-select: none;
+  cursor: text;
+  margin-left: 1.5em;
+}
+
+.table-header__inputs-search + .table-header__inputs-search-label {
+  border: transparent;
+  transition: color 0.5s, scale 0.5s, translate 0.5s;
+}
+
+.table-header__inputs-search:placeholder-shown
+  + .table-header__inputs-search-label {
+  translate: 0.5em 0.5em;
+
+}
+
+.table-header__inputs-search {
+
+  &:focus,
+  &:not(:placeholder-shown){
+    border-bottom: 1px solid var(--clr-logo-green);
+  }
+
+  &:focus + .table-header__inputs-search-label,
+  &:not(:placeholder-shown) + .table-header__inputs-search-label {
+    translate: 0em -1.5em;
+    scale: 0.9;
+    color: var(--clr-logo-green);
+  }
+
+  &:focus + .table-header__inputs-search-label + .i__search,
+  &:not(:placeholder-shown) ~ .i__search {
+    color: var(--clr-logo-green);
+  }
+
+
+
+}
+
+.add__button {
+  background-color: var(--clr-logo-blue);
+  padding: 1em;
+  border-radius: 0.5em;
+  translate: 0.2em 0.4em;
+
+  color: var(--clr-white);
+  transition: translate 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: 0.2em 0.4em 0 var(--clr-dark-gray);
+    translate: 0 0;
+  }
+
+  &:active {
+    translate: 0.2em 0.4em;
+    box-shadow: 0em 0em 0 var(--clr-dark-gray);
+  }
+}
+
+/*
+.table-header {
   background-color: var(--clr-logo-green);
   padding: 1em 2em;
   text-align: center;
@@ -83,3 +200,5 @@
     box-shadow: 0em 0em 0 var(--clr-dark-gray);
   }
 }
+
+*/

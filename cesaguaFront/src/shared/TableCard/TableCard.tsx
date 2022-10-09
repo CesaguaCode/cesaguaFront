@@ -1,28 +1,37 @@
 import { memo, MouseEventHandler } from "react";
 
+import "./tableCard.scss"
+
 interface props {
   id: number;
   title: string;
-  date: string;
+  date?:string;
   description: string;
   image: string;
   handler: MouseEventHandler;
 }
 
-const MilestoneCard = ({ id, title, date, description, image, handler }: props) => {
+const TableCard = ({
+  id,
+  title,
+  date,
+  description,
+  image,
+  handler,
+}: props) => {
   const buttons = ["delete", "edit"];
 
   return (
-    <div className="milestones-card">
-      <img src={image} alt={`Imagen del hito ${title}`}/>
+    <div className="table-card">
+      <img src={image} alt={`Imagen del hito ${title}`} />
 
-      <div className="milestones-card__details">
-        <h2 className="milestones-card__title">{title}</h2>
-        <h3 className="milestones-card__date">{date}</h3>
-        <p className="milestones-card__detail">{description} </p>
+      <div className="table-card__details">
+        <h2 className="table-card__title">{title}</h2>
+        {date && <h3 className="table-card__date">{date}</h3>}
+        <p className="table-card__detail">{description} </p>
       </div>
 
-      <div className="milestones-card__action-container">
+      <div className="table-card__action-container">
         {buttons.map((button) => (
           <button
             key={button}
@@ -40,4 +49,4 @@ const MilestoneCard = ({ id, title, date, description, image, handler }: props) 
   );
 };
 
-export default memo(MilestoneCard);
+export default memo(TableCard);

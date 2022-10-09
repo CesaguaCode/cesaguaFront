@@ -1,8 +1,6 @@
-.pins-table {
-  color: white;
-  overflow-y: hidden;
+.pins-table{
+  overflow: hidden;
 }
-
 .pins-table__title{
   font-size: 2em;
   margin: 0;
@@ -13,13 +11,11 @@
   background-color: var(--clr-logo-green);
   padding: 1em 10%;
   text-align: center;
-  
   color: var(--clr-white);
   animation: fadeInDown 1s;
 }
 
 .pins-inputs__container {
-  display: flex;
   flex-wrap: wrap;
   gap: 1em;
 }
@@ -30,6 +26,7 @@
   border: transparent;
   user-select: none;
   width: 100%;
+  padding: 1em;
 }
 
 .pins-inputs__search-label {
@@ -44,7 +41,7 @@
 }
 
 .pins-inputs__search:placeholder-shown + .pins-inputs__search-label {
-  translate: 0.5em 0.5em;
+  translate: 0.5em 1em;
 }
 
 .pins-inputs__search:focus + .pins-inputs__search-label,

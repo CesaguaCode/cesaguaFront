@@ -1,0 +1,13 @@
+.milestones-table {
+    margin: 0 10%;
+  }
+  
+  .milestones-table__body {
+    padding: 1em 0;
+    color: var(--clr-black);
+    background-color: var(--clr-white);
+    max-height: 59vh;
+    overflow: auto;
+    margin-top: 1em;
+  }
+  

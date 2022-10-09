@@ -15,6 +15,7 @@ const TableHeader = ({ title, search, handleSearch, handleAdd }: props) => {
       <h1 className="table-header__title">Gestión de {title}</h1>
       <div className="table-header__inputs-container">
         <div className="input-group">
+          
           <input
             id="search"
             type="text"
@@ -25,9 +26,10 @@ const TableHeader = ({ title, search, handleSearch, handleAdd }: props) => {
           />
           <label htmlFor="search" className="table-header__inputs-search-label">
             <span>
-              <i className="ico i__search" /> Buscar
+            Buscar
             </span>
           </label>
+          <i className="ico i__search" />
         </div>
 
         <button className="btn add__button" onClick={handleAdd}>
