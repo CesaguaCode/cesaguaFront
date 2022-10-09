@@ -10,6 +10,9 @@ import MilestonesTablePage from "../pages/milestones/MilestonesTablePage";
 import PinsListPage from "../pages/pins/PinsListPage/PinsListPage";
 import ServicesListPage from "../pages/services/ServicesListPage";
 import ServiceDetailPage from "../pages/services/ServicesDetailPage";
+import LoginPage from "../pages/login/LoginPage";
+import RequestRecoverPage from "../pages/login/RequestRecoverPage";
+import ResetPasswordPage from "../pages/login/ResetPasswordPage";
 
 const AuthRouter = () => {
   /**
@@ -25,6 +28,11 @@ const AuthRouter = () => {
       <Route path="/pins" element={<PinsListPage />}></Route>
       <Route path="/services" element={<ServicesListPage />}></Route>
       <Route path="/services/*" element={<ServiceDetailPage />}></Route>
+
+      
+      <Route path="/login" element={<LoginPage />}></Route>
+      <Route path="/recover" element={<RequestRecoverPage />}></Route>
+      <Route path="/reset" element={<ResetPasswordPage />}></Route>
 
       // TODO: Eliminar en produccion
       <Route path="/icons" element={<IconsPage></IconsPage>}></Route>

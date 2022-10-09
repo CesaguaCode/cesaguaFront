@@ -66,5 +66,13 @@
     --image-url: url(../icons/clear.svg);
   }
 
+  &lock::after {
+    --image-url: url(../icons/lock.svg);
+  }
+
+  &user::after {
+    --image-url: url(../icons/user.svg);
+  }
+
 
 }

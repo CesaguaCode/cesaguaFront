@@ -1,0 +1,135 @@
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65vh;
+    min-height: 600px;
+    color: var(--clr-dark-gray);
+    animation: fadeInLeft 1s;
+}
+
+.login-card{
+    background: var(--clr-white);
+    width: 80%;
+    min-width: 260px;
+    max-width: 500px;
+    padding: 2em 5em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-hr{
+    width: 90%;
+    margin: 2em 0;
+}
+
+.login-title{
+    font-size: clamp(1.9em, 5vw, 2.5em);
+    color: var(--clr-logo-green);
+    font-weight: 500;
+    border-bottom: 2px solid var(--clr-logo-green);
+}
+
+.input-group__login{
+    width: max-content;
+    margin: 2em 0;
+    width: 100%;
+}
+
+.input-group__login .ico{
+    position: absolute;
+    top: -.5em;
+    color: var(--clr-dark-gray);
+}
+
+.login-input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    padding: 0em 0 0 1.8em;
+    font-size: 1.2em;
+    transition: border-bottom .5s;
+} 
+
+.login-input:focus{
+    border-bottom: 1px solid var(--clr-logo-green);
+}
+
+
+.login-label{
+    position: absolute;
+    left: 0;
+    top: -.2em;
+    margin-left: 2em;
+    transition: translate .5s, scale .5s;
+    color: var(--clr-dark-gray);
+    pointer-events: none;
+}
+
+.login-error{
+    position: absolute;
+    font-size: .8em;
+    bottom: -1.5em;
+    right: 0;
+    color: var(--clr-danger);
+}
+
+.login__btn-submit{
+    padding: 1em 6em;
+    background-color: var(--clr-danger);
+    color: var(--clr-white);
+    margin: 1em 0;
+}
+
+.login__btn-recover{
+    margin: 1em auto 0 auto;
+    width: max-content;
+    font-size: .8rem;
+    color: var(--clr-logo-green);
+    text-decoration: underline;
+}
+
+
+.login-input:focus+label,
+.login-input:not(:placeholder-shown)+label{
+    translate: 0 -1.5em;
+    scale: .8;
+}
+
+
+.waves{
+    width: 100vw;
+    height: 100px;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    
+}
+
+.wave1{
+    background-image: url(../../../assets/images/wave1.svg);
+    animation: waveMotion 55s infinite linear;
+}
+
+.wave2{
+    background-image: url(../../../assets/images/wave2.svg);
+    animation: waveMotion 70s infinite linear reverse;
+}
+
+.wave3{
+    background-image: url(../../../assets/images/wave3.svg);
+    animation: waveMotion 60s infinite linear;
+}
+
+@keyframes waveMotion {
+    from{
+        background-position: top right;  
+    }
+
+    to{
+        background-position: top left;
+    }
+}

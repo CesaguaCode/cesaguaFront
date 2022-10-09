@@ -14,5 +14,7 @@
   "edit",
   "delete",
   "close",
+  "lock",
+  "user",
   "clear"
 ]

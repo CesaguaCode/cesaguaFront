@@ -1,5 +1,5 @@
 .table-header {
-  background-color: var(--clr-logo-blue);
+  background-color: var(--clr-logo-green);
   padding: 1em 2em;
   text-align: center;
   margin-top: 2em;
@@ -17,10 +17,23 @@
   flex-wrap: wrap;
   gap: 1em;
 }
+
 .input-group {
   color: var(--clr-black);
   position: relative;
 }
+
+.input-group .table-header__inputs-search-label {
+  position: absolute;
+  left: 0;
+
+  span {
+    display: flex;
+    gap: 0.5em;
+    place-items: center;
+  }
+}
+
 
 .table-header__inputs-search {
   padding: 0.5em;
@@ -52,12 +65,18 @@
   color: var(--clr-white);
 }
 .add__button {
-  background-color: var(--clr-logo-green);
+  background-color: var(--clr-logo-blue);
   padding: 1em;
   border-radius: 0.5em;
-  box-shadow: 0.2em 0.4em 0 var(--clr-dark-gray);
+  translate:  0.2em 0.4em;
+ 
   color: white;
   transition: translate 0.2s, box-shadow 0.2s;
+
+  &:hover{
+    box-shadow: 0.2em 0.4em 0 var(--clr-dark-gray);
+    translate:  0 0;
+  }
 
   &:active {
     translate: 0.2em 0.4em;

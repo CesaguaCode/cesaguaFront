@@ -1,0 +1,10 @@
+.recovery-detail{
+    margin: 1em 0;
+}
+
+.recovery-title{
+    font-size: clamp(1.5em, 5vw, 2.5em);
+    color: var(--clr-logo-green);
+    font-weight: 500;
+    border-bottom: 2px solid var(--clr-logo-green);
+}

@@ -35,6 +35,7 @@
 .pins-inputs__search-label {
   user-select: none;
   cursor: text;
+  position: absolute;
 }
 
 .pins-inputs__search + .pins-inputs__search-label {

@@ -4,18 +4,6 @@
   color: white;
 }
 
-.input-group label {
-  position: absolute;
-  left: 0;
-
-  span {
-    display: flex;
-    gap: 0.5em;
-    place-items: center;
-  }
-}
-
-
 .milestones-table__body {
   padding: 1em 0;
   color: var(--clr-black);
