@@ -1,0 +1,130 @@
+.milestones-create__details {
+   width: 100%;
+}
+
+.milestones-create__title{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-weight: bold;
+}
+
+.milestones-create__description{
+    margin: 0;
+    resize: none;
+    width: 100%;
+    border: none;  
+    border: 1px dashed var(--clr-dark-gray);
+}
+
+.milestones-create__image{
+    background-color: var(--clr-bg-main);
+    cursor: pointer;
+}
+
+.milestones-create__description:focus::after {
+    content: '';
+}
+
+.milestones-create__title,
+.milestones-create__description,
+.milestones-create__date{
+    caret-color: var(--milestone-color);
+    outline: none;
+    width: 100%;
+}
+
+
+.milestones-create__date{
+    border: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    user-select: none;
+}
+
+.input-date-label{
+    font-size: 1.2em;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    background-color: var(--clr-white);
+    transition: opacity .5s;
+    user-select: none;
+    color: var(--clr-dark-gray);
+}
+
+.invisible-label{
+    opacity: 0;
+}
+
+.remove-image{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--clr-danger);
+    color: var(--clr-white);
+    border-radius: 0 var(--border-radius-s) 0 1em;
+    border: none;
+    cursor: pointer;
+    padding: .5em 1em;
+    opacity: 0;
+    transition: opacity .2s;
+    pointer-events: none;
+}
+
+.remove-image::after{
+    content: "X";
+}
+
+.remove-image__visible{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.milestones-section__placeholder-text{
+    position: absolute;
+    bottom: -2em;
+    text-align: center;
+    width: 100%;
+    font-size: .9em;
+}
+
+.milestone-create__title{
+    padding: 1em;
+    text-align: center;
+    color: var(--clr-dark-gray);
+    animation: fadeInDown 1s;
+}
+
+.milestones-create__button-container{
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin: 1em;
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+    animation-delay: 1s;
+    padding: .5em;
+}
+
+.milestones-create__button-container .btn{
+    padding: 1em 3em;
+    border-radius: var(--border-radius-s);
+    color: var(--clr-white);
+    
+}
+
+.milestones-create__button-container .btn-cancel{
+    background: var(--clr-danger);
+}
+
+.milestones-create__button-container .btn-save{
+    background: var(--clr-logo-green);
+}
+
+
+
+
+::-webkit-datetime-edit-month-field { text-transform: capitalize; }
+::-webkit-datetime-edit-text { display: none; }
+::-webkit-datetime-edit-year-field { padding-left: 0.5em; }

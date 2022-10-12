@@ -32,7 +32,7 @@ const AlertSystem = () => {
         title: title,
         text: detail,
         confirmButtonText: "Si, confirmar",
-        cancelButtonText: "No, cancelar",
+        cancelButtonText: "No, volver",
         customClass: {
           cancelButton: "cancel-alert",
           confirmButton: "confirm-alert",

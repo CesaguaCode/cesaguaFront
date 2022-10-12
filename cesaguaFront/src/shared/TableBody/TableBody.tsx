@@ -1,3 +1,4 @@
+import { memo } from "react";
 import TableCard from "../TableCard/TableCard";
 import "./tableBody.scss";
 
@@ -16,4 +17,4 @@ const TableBody = ({elements, handleCard}:props) => {
   );
 };
 
-export default TableBody;
+export default memo(TableBody);

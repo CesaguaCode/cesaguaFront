@@ -74,5 +74,9 @@
     --image-url: url(../icons/user.svg);
   }
 
+  &info::after {
+    --image-url: url(../icons/info.svg);
+  }
+
 
 }

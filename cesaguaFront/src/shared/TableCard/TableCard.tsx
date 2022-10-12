@@ -1,4 +1,5 @@
 import { memo, MouseEventHandler } from "react";
+import { CONVERT_DATE_CARD } from "../../utils/Constants";
 
 import "./tableCard.scss"
 
@@ -21,13 +22,15 @@ const TableCard = ({
 }: props) => {
   const buttons = ["delete", "edit"];
 
+
+
   return (
     <div className="table-card">
       <img src={image} alt={`Imagen del hito ${title}`} />
 
       <div className="table-card__details">
         <h2 className="table-card__title">{title}</h2>
-        {date && <h3 className="table-card__date">{date}</h3>}
+        {date && <h3 className="table-card__date">{CONVERT_DATE_CARD(date)}</h3>}
         <p className="table-card__detail">{description} </p>
       </div>
 

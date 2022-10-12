@@ -4,7 +4,7 @@
     gap: 3em;
     min-width: 270px;
     width: 60%;
-  
+    border-radius: var(--border-radius-s);
     padding: 1em;
     background-color: var(--clr-white);
   }
@@ -13,6 +13,7 @@
     max-width: 300px;
     width: 50%;
     min-width: 150px;
+    border-radius: var(--border-radius-s);
   }
   
   .service-card__details {
@@ -40,7 +41,7 @@
     background-color: var(--clr-logo-green);
     padding: 1em 2em;
     color: var(--clr-white);
-    
+    border-radius: var(--border-radius-s);
     width: max-content;
 
   }

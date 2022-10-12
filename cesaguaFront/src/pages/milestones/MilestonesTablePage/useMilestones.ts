@@ -1,23 +1,42 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import AlertSystem from "../../../utils/AlertSystem";
-import milsetoneService from "../MilsetoneService";
 
-import milestoneRequest from "./request.json";
+import { useNavigate } from "react-router-dom";
+
+import milsetoneService from "../milsetoneService";
+import useMemory from "../../../hooks/useMemory";
 
 const useMilestones = () => {
   const alerts = AlertSystem();
   const [search, setSearch] = useState("");
-  const [milestones, setMilestones] = useState(milestoneRequest as Array<any>);
+  const [milestones, setMilestones] = useState([]);
   const allMilestones = useRef();
 
+  const {obtainMemory, updateMemory} = useMemory();
+
+  const navigate = useNavigate();
+
   const { getAll, deleteOne } = milsetoneService();
-  /*
+  
     useEffect(() => {
-      service.getAll().then((response) => {
-        allMilestones.current = response;
-        setMilestones(response);
-      });
-    }, []);*/
+
+      // We load what is memorized if the time limit has not passed.
+      const memorizedMilestones = obtainMemory("milestones")
+       
+      if(memorizedMilestones!.state){
+        setMilestones(memorizedMilestones!.data);
+      }else{
+
+        getAll().then((response) => {
+          updateMemory("milestones", response.data)
+          allMilestones.current = response.data;
+          setMilestones(response.data);
+        }).catch(() => {
+          setMilestones([]);
+        });
+      }
+     
+    }, []);
 
   useEffect(() => {
     if (allMilestones.current) {
@@ -31,13 +50,14 @@ const useMilestones = () => {
 
   const reloadMilestones = useCallback(() => {
     getAll().then((response) => {
+      updateMemory("milestones", response.data)
       allMilestones.current = response;
       setMilestones(response);
     });
   }, []);
 
   const handleAdd = () => {
-    console.log("Agregando");
+    navigate("/milestones/create");
   };
 
   const handleSearch = (e: any) => {
@@ -73,7 +93,7 @@ const useMilestones = () => {
   };
 
   const handleEdit = (id: number) => {
-    console.log("Editing" + id);
+    navigate(`/milestones/edit/${id}`);
   };
 
   return { search, milestones, handleAdd, handleSearch, handleCard };

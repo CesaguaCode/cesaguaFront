@@ -36,6 +36,7 @@ const TableHeader = ({ title, search, handleSearch, handleAdd }: props) => {
           <i className="ico i__add" />
           Agregar
         </button>
+        
       </div>
     </header>
   );

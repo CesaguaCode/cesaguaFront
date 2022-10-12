@@ -1,22 +1,32 @@
-import axios from "axios";
+import useInterceptor from "../../hooks/useInterceptor";
+import { Milestone } from "./../../models/Milestone";
 
 const milsetoneService = () => {
   const URL: string = "http://localhost:3200/milestone";
 
+  const { getData, deleteData, postData, putData } = useInterceptor();
+
   const getAll = async () => {
-    return await axios.get(URL).then(({ data }) => data.data);
-  }
+    return await getData(URL);
+  };
+
+  const getOne = async (id: number) => {
+    return await getData(`${URL}/${id}`);
+  };
 
   const deleteOne = async (id: number) => {
-    const config = {
-      headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoIjp7InJvbCI6MywiaWQiOjF9LCJpYXQiOjE2NjUyNDI2MjEsImV4cCI6MTY2NTI3ODYyMX0.AGsl3cjsEofudgcLHHfECP2vJFMbWKg19YqVHuAZMak` },
-    };
+    return await deleteData(`${URL}/${id}`);
+  };
 
-    return await axios.delete(`${URL}/${id}`, config);
-  }
+  const createOne = async (milestone: Milestone) => {
+    return await postData(URL, milestone);
+  };
 
-  return { getAll, deleteOne }
+  const updateOne = async (milestone: Milestone) => {
+    return await putData(`${URL}/${milestone.id}`, milestone);
+  };
 
-}
+  return { getAll, getOne, deleteOne, createOne, updateOne};
+};
 
 export default milsetoneService;

@@ -9,12 +9,13 @@
     margin: 2em 0 5em 0;
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);
     width: clamp(270px, 80%, 600px);
-  
+    border-radius: var(--border-radius-s);
+    
     &__img {
       border-radius: 50%;
       width: clamp(75px, 20vw, 150px);
       height: clamp(75px, 20vw, 150px);
-      
+      object-fit: cover;
     }
   }
   

@@ -16,5 +16,6 @@
   "close",
   "lock",
   "user",
-  "clear"
+  "clear",
+  "info"
 ]

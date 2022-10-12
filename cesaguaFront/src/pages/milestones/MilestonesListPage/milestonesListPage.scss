@@ -31,11 +31,25 @@
   }
 }
 
-.milestones-section__image {
-  max-width: 400px;
+.milestones-section__image-container{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.milestones-section:after {
+.milestones-section__image {
+  max-width: 400px;
+  width: 25vw;
+  min-width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: var(--border-radius-s);
+
+  object-fit: cover;
+}
+
+.milestones-section::after {
   content: "";
   width: 40%;
   height: 100%;
@@ -44,9 +58,11 @@
   position: absolute;
 }
 
-.milestones-section:first-of-type::after {
+.milestones-section:first-of-type:after {
   height: 50%;
   bottom: 0%;
+  isolation: isolate;
+  pointer-events: none;
 }
 
 .milestones-section:last-of-type::after {
@@ -85,13 +101,14 @@
 
 .milestones-details {
   max-width: 600px;
-
+  width: 100%;
 }
 
 .milestones-details__title {
   font-size: 2em;
   margin: 1rem 0;
   color: var(--clr-dark-gray);
+  
   border-bottom: 4px solid var(--milestone-color);
 }
 

@@ -3,15 +3,20 @@
 @import "_icons.scss";
 @import "_scroll.scss";
 @import "_swal.scss";
+@import "_variables.scss";
+
+@import "../fonts/bungee/stylesheet.css";
+@import "../fonts/roboto/stylesheet.css";
 
 :where(*, *:after, *:before) {
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: roboto,sans-serif;
  
 }
 
 html {
   height: 100%;
+  margin-right: calc(-1 * (100vw - 100%));
 }
 
 body {

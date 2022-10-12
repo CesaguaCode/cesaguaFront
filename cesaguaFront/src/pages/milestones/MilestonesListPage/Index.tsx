@@ -1,11 +1,12 @@
 import React from "react";
+import useMilestones from "../MilestonesTablePage/useMilestones";
 import MilestoneSection from "./components/MilestoneSection";
 
 import "./milestonesListPage.scss";
 
-import milestones from "./request.json"
-
 const MilestonesListPage = () => {
+
+  const { milestones}:any = useMilestones();
 
   return (
     <React.Fragment>
@@ -13,7 +14,7 @@ const MilestonesListPage = () => {
       <h1 className="milestones-title">Hitos</h1>
 
         {
-          milestones.map((milestone) => <MilestoneSection key={milestone.id} {...milestone}/>)
+          milestones.map((milestone:any) => <MilestoneSection key={milestone.id} {...milestone}/>)
         }
 
     </React.Fragment>

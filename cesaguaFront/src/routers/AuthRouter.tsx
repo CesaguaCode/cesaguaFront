@@ -16,6 +16,8 @@ import ResetPasswordPage from "../pages/login/ResetPasswordPage";
 import AnimatedWaves from "../shared/AnimatedWaves/AnimatedWaves";
 import ServicesTablePage from "../pages/services/ServicesTablePage";
 import Error404Page from "../pages/general/Error404Page";
+import MilestonesCreatePage from "../pages/milestones/MilestonesCreatePage";
+import PinsCreatePage from "../pages/pins/PinsCreatePage";
 
 const AuthRouter = () => {
   /**
@@ -30,10 +32,8 @@ const AuthRouter = () => {
       <Route path="/milestones" element={<MilestonesListPage />}></Route>
       <Route path="/pins" element={<PinsListPage />}></Route>
       <Route path="/services" element={<ServicesListPage />}></Route>
-      <Route path="/services/crud" element={<ServicesTablePage />}></Route>
       
       <Route path="/services/*" element={<ServiceDetailPage />}></Route>
-
       
       <Route path="/" element={<AnimatedWaves />}>
         <Route path="/login" element={<LoginPage />}></Route>
@@ -54,6 +54,12 @@ const AuthRouter = () => {
     <>
       <Route path="/auth" element={<h1>Privado</h1>}></Route>
       <Route path="/milestones/crud" element={<MilestonesTablePage />}></Route>
+      <Route path="/milestones/create" element={<MilestonesCreatePage />}></Route>
+      <Route path="/milestones/edit/:id" element={<MilestonesCreatePage />}></Route>
+
+      <Route path="/services/crud" element={<ServicesTablePage />}></Route>
+
+      <Route path="/pins/create" element={<PinsCreatePage />}></Route>
     </>
   );
 

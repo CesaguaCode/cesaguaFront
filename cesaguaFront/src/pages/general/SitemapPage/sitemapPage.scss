@@ -16,6 +16,7 @@
   box-shadow: 0 0  var(--clr-dark-gray);
   transition: translate .2s,  box-shadow .2s;
   color: var(--clr-black);
+  border-radius: var(--border-radius-s);
 }
 
 .map-tier1__container {
