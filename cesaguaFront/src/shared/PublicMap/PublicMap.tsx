@@ -1,4 +1,5 @@
 import { LatLngTuple } from "leaflet";
+import { memo, useMemo } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import MapMarker from "../MapMarker/MapMarker";
 import "./publicMap.scss";
@@ -39,4 +40,4 @@ const PublicMap = ({ extras, setMap, markers }: props) => {
   );
 };
 
-export default PublicMap;
+export default memo(PublicMap);

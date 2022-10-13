@@ -11,7 +11,7 @@ interface props {
 
 const MapMarker = ({ position, name, province, canton, district }: props) => {
   const icon = new Icon({
-    iconUrl: "./marker.svg",
+    iconUrl: "/marker.svg",
     iconSize: [25, 25],
   });
 

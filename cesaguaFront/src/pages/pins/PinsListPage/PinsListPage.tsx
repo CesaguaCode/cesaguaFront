@@ -74,7 +74,9 @@ const PinsListPage = () => {
         </div>
       </header>
 
-      <PublicMap markers={markers} setMap={setMap} />
+      <div className="pins-public__map">
+        <PublicMap markers={markers} setMap={setMap} />
+      </div>
     </section>
   );
 };
