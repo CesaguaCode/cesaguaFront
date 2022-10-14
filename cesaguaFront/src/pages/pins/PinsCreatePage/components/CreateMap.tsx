@@ -1,49 +1,47 @@
-import { LatLngTuple, marker } from "leaflet";
-import { useCallback, useEffect, useState } from "react";
 import PublicMap from "../../../../shared/PublicMap/PublicMap";
-
 import MapMarker from "../../../../shared/MapMarker/MapMarker";
 import ClickComponent from "./ClickComponent";
 import PinInputComponent from "./PinInputComponent";
+import useCreateMap from "./useCreateMap";
+import usePins from "../../usePins";
 
-const CreateMap = () => {
-  const START_POS: LatLngTuple = [10.18, -83.74];
+interface props {
+  newMarker:any,
+  setNewMarker:any,
+  handleCreate:any,
+  handleCancel:any,
+  nameRef:any,
+  mapState:any
+}
+const CreateMap = ({newMarker, setNewMarker,handleCreate, handleCancel, nameRef, mapState}:props) => {
+  const { setMap, setZoom, handleName } = useCreateMap({newMarker, setNewMarker, mapState});
 
-  const [zoom, setZoom] = useState<any>(null);
-  const [map, setMap] = useState<any>(null);
-  const [newMarker, setNewMarker] = useState({
-    position: null,
-    name: "",
-    province: "Limón",
-    canton: "Pococí",
-    district: "Guápiles",
-  });
-
-  const handleName = (e: any) => {
-    setNewMarker((previous) => {
-      return {
-        ...previous,
-        name: e.target.value,
-      };
-    });
-  };
+  const {pins}:any= usePins() 
 
   return (
     <section className="map-creation__section">
-      <PublicMap
-        setMap={setMap}
-        markers={[]}
-        extras={
-          <>
-            <MapMarker key={newMarker.name} {...newMarker}></MapMarker>
-            <ClickComponent setClicked={setNewMarker}></ClickComponent>
-          </>
-        }
-      ></PublicMap>
+      <div className="cretion-map__wrapper">
+        <PublicMap
+          setMap={setMap}
+          markers={pins}
+          extras={
+            <>
+              <MapMarker key={newMarker.name} {...newMarker}></MapMarker>
+              <ClickComponent setClicked={setNewMarker}></ClickComponent>
+            </>
+          }
+        ></PublicMap>
+      </div>
 
-        <PinInputComponent newMarker={newMarker} setNewMarker={setNewMarker} setZoom={setZoom} handleName={handleName}></PinInputComponent>
-
-     
+      <PinInputComponent
+        newMarker={newMarker}
+        setNewMarker={setNewMarker}
+        setZoom={setZoom}
+        handleName={handleName}
+        handleCreate={handleCreate}
+        handleCancel={handleCancel}
+        nameRef={nameRef}
+      ></PinInputComponent>
     </section>
   );
 };

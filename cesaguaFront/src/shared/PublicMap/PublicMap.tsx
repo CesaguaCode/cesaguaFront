@@ -8,10 +8,10 @@ interface props {
   extras?: JSX.Element;
   markers?: any;
   setMap?: any;
+  center?:LatLngTuple;
 }
 
-const PublicMap = ({ extras, setMap, markers }: props) => {
-
+const PublicMap = ({ extras, setMap, markers, center }: props) => {
   const START_POS: LatLngTuple = [10.18, -83.74];
 
   const mapConfig = {
@@ -27,11 +27,11 @@ const PublicMap = ({ extras, setMap, markers }: props) => {
 
   return (
     <div>
-      <MapContainer {...mapConfig as any} ref={setMap}>
+      <MapContainer {...(mapConfig as any)} ref={setMap}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
         {markers.map((marker: any) => (
-          <MapMarker key={marker.name} {...marker}></MapMarker>
+          <MapMarker key={marker.id} {...marker}></MapMarker>
         ))}
 
         {extras}

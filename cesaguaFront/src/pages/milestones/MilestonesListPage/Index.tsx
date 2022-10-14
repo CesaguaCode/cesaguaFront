@@ -1,12 +1,12 @@
 import React from "react";
-import useMilestones from "../MilestonesTablePage/useMilestones";
+import useMilestones from "../useMilestones";
 import MilestoneSection from "./components/MilestoneSection";
 
 import "./milestonesListPage.scss";
 
 const MilestonesListPage = () => {
 
-  const { milestones}:any = useMilestones();
+  const { milestones }:any = useMilestones();
 
   return (
     <React.Fragment>

@@ -1,8 +1,10 @@
 import { Marker, Popup } from "react-leaflet";
-import { LatLngTuple, Icon } from "leaflet";
+import { Icon } from "leaflet";
+import { memo, useEffect, useState } from "react";
+import svg from "../../assets/images/marker.svg"
 
 interface props {
-  position: LatLngTuple | null;
+  position: any;
   name: string;
   province: string;
   canton: string;
@@ -11,15 +13,17 @@ interface props {
 
 const MapMarker = ({ position, name, province, canton, district }: props) => {
   const icon = new Icon({
-    iconUrl: "/marker.svg",
+    iconUrl: svg,
     iconSize: [25, 25],
   });
+
+  
 
   return (
     position && (
       <Marker position={position} icon={icon}>
         <Popup>
-          <b>{name}</b>
+          <b>{name || "Sin nombre"}</b>
           <br /> {province}, {canton}, {district}
         </Popup>
       </Marker>
@@ -27,4 +31,4 @@ const MapMarker = ({ position, name, province, canton, district }: props) => {
   );
 };
 
-export default MapMarker;
+export default memo(MapMarker);

@@ -14,7 +14,6 @@ const useCreateMilestones = () => {
   const { createOne, updateOne, getOne } = milsetoneService();
 
   const params = useParams();
-
   const { id } = params;
 
   const titleRef = useRef();
@@ -70,9 +69,6 @@ const useCreateMilestones = () => {
     try {
       const res = id ? await updateOne({ ...milestoneData }) : await createOne({ id:id,...milestoneData });
 
-      console.log(res);
-      
-
       if (res.state === 201 || res.state === 200) {
         toastAlert(
           `El hito se ${id ? "editó" : "creó"} exitosamente`,
@@ -81,7 +77,6 @@ const useCreateMilestones = () => {
         navigate("/milestones/crud");
       }
     } catch (error: any) {
-      console.dir(error);
 
       if (error.response && error.response.status === 403) {
         toastAlert("No tiene permisos para realizar esta acción", "error");

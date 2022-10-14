@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import AlertSystem from "../../../utils/AlertSystem";
+import AlertSystem from "../../utils/AlertSystem";
 
 import { useNavigate } from "react-router-dom";
 
-import milsetoneService from "../milsetoneService";
-import useMemory from "../../../hooks/useMemory";
+import milsetoneService from "./milsetoneService";
+import useMemory from "../../hooks/useMemory";
 
 const useMilestones = () => {
   const alerts = AlertSystem();
@@ -12,37 +12,37 @@ const useMilestones = () => {
   const [milestones, setMilestones] = useState([]);
   const allMilestones = useRef();
 
-  const {obtainMemory, updateMemory} = useMemory();
+  const { obtainMemory, updateMemory } = useMemory();
 
   const navigate = useNavigate();
 
   const { getAll, deleteOne } = milsetoneService();
-  
-    useEffect(() => {
 
-      // We load what is memorized if the time limit has not passed.
-      const memorizedMilestones = obtainMemory("milestones")
-       
-      if(memorizedMilestones!.state){
-        setMilestones(memorizedMilestones!.data);
-      }else{
+  useEffect(() => {
+    // We load what is memorized if the time limit has not passed.
+    const memorizedMilestones = obtainMemory("milestones");
 
-        getAll().then((response) => {
-          updateMemory("milestones", response.data)
+    if (memorizedMilestones!.state) {
+      setMilestones(memorizedMilestones!.data);
+      allMilestones.current = memorizedMilestones!.data;
+    } else {
+      getAll()
+        .then((response) => {
+          updateMemory("milestones", response.data);
           allMilestones.current = response.data;
           setMilestones(response.data);
-        }).catch(() => {
+        })
+        .catch(() => {
           setMilestones([]);
         });
-      }
-     
-    }, []);
+    }
+  }, []);
 
   useEffect(() => {
     if (allMilestones.current) {
       setMilestones(
         (allMilestones.current as any).filter((milestone: any) =>
-          milestone.title.includes(search)
+          milestone.title.toLowerCase().includes(search.toLowerCase())
         )
       );
     }
@@ -50,7 +50,7 @@ const useMilestones = () => {
 
   const reloadMilestones = useCallback(() => {
     getAll().then((response) => {
-      updateMemory("milestones", response.data)
+      updateMemory("milestones", response.data);
       allMilestones.current = response;
       setMilestones(response);
     });

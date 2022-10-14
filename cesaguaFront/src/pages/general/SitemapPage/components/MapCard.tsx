@@ -8,7 +8,6 @@ interface props{
 }
 
 const MapCard = ({title, icon, link}:props) => {
-  console.log(link);
   
   return (
     <Link to={link} className="map-card animate__animated animate__fadeInDown">

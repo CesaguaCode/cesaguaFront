@@ -1,17 +1,23 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import PublicMap from "../../../shared/PublicMap/PublicMap";
+
+import usePins from "../usePins";
 import "./PinsListPage.scss";
 
-import markers from "./request.json";
 
 const PinsListPage = () => {
+
+  const {pins}:any= usePins()
+
+ 
+  
   const [search, setSearch] = useState("");
   const [map, setMap] = useState<any>(null);
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
     setSearch(query);
-    const coincidences: any = markers.filter((marker) =>
+    const coincidences: any = pins.filter((marker:any) =>
       marker.name.toLowerCase().includes(query.toLowerCase())
     );
 
@@ -56,8 +62,8 @@ const PinsListPage = () => {
 
             {
               <datalist id="pins">
-                {markers.map(
-                  (marker) =>
+                {pins.map(
+                  (marker:any) =>
                     marker.name
                       .toLowerCase()
                       .includes(search.toLowerCase()) && (
@@ -75,7 +81,7 @@ const PinsListPage = () => {
       </header>
 
       <div className="pins-public__map">
-        <PublicMap markers={markers} setMap={setMap} />
+        <PublicMap markers={pins} setMap={setMap} />
       </div>
     </section>
   );

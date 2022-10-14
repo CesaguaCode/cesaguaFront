@@ -8,8 +8,6 @@ import "./sitemapPage.scss";
 
 const SitemapPage = () => {
   
-  const [first, setfirst] = useState(0)
-
   return (
       <div className="tier-container map-tier1__container">
         <MapCard title={links.title} icon={links.icon} link={links.link} />

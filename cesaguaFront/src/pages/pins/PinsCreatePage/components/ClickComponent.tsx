@@ -4,15 +4,14 @@ import { useMapEvents } from "react-leaflet";
 
 const ClickComponent = ({ setClicked }: { setClicked: any }) => {
   const map = useMapEvents({
-     move: () =>{
-        setClicked((previous: any) => {
-          return {
-            ...previous,
-            position: map.getCenter(),
-          };
-        });
-      },
-    
+    move: () => {
+      setClicked((previous: any) => {
+        return {
+          ...previous,
+          position: map.getCenter(),
+        };
+      });
+    },
   });
   return <></>;
 };

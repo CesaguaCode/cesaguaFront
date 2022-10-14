@@ -1,7 +1,7 @@
 import TableHeader from "../../../shared/TableHeader/TableHeader";
 import TableBody from "../../../shared/TableBody/TableBody";
 
-import useMilestones from "./useMilestones";
+import useMilestones from "../useMilestones";
 import "./MilestonesTablePage.scss";
 
 const MilestonesTablePage = () => {

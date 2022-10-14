@@ -1,0 +1,81 @@
+.pins-table__page {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.pins-table__wrapper{
+    height: 55vh;
+    overflow: auto;
+    margin-top: 1em;
+    border-radius: var(--border-radius-s);
+    background-color: var(--clr-white);
+    animation: fadeInUp 1s;
+}
+
+.pins-table {
+
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+ 
+  width: 100%;
+ 
+}
+
+.pins-table th {
+  padding: 1em;
+  background-color: var(--clr-logo-blue);
+  color: white;
+}
+
+.pins-table td {
+  padding: 1em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 30ch;
+  white-space: nowrap;
+}
+
+.pins-table tr:nth-of-type(even){
+    background-color: rgb(226, 228, 243);
+
+}
+
+.pins-table tbody td:last-child{
+   display: flex;
+   gap: 1em;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+}
+
+.pins-table tr {
+  transition: translate 0.5s, background 0.5s, box-shadow 0.5s;
+}
+.pins-table tbody tr:hover {
+  cursor: pointer;
+
+  background-color: var(--clr-bg-main);
+  translate: -0.2em -0.2em;
+  box-shadow: 0.2em 0.2em 0.2em var(--clr-light-gray);
+}
+
+@media screen and (min-width: 800px) {
+  .pins-table tbody td:nth-child(5) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 799px) {
+    .pins-table__page{
+        width: 90%;
+    }
+
+  .pins-table thead th:where(:nth-child(2), :nth-child(3), :nth-child(4)),
+  .pins-table
+    tbody
+    td:where(:nth-child(6), :nth-child(2), :nth-child(3), :nth-child(4), :nth-child(6), :nth-child(2), :nth-child(3), :nth-child(4)) {
+    display: none;
+  }
+}
