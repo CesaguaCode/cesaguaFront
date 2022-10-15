@@ -1,8 +1,15 @@
+import { useUser } from "../../../contexts/AuthContext";
+
 const IndexPage = () => {
+
+  const { user } = useUser();
+
   return (
     <div>
       <p>
-        Index
+        {
+          JSON.stringify(user)
+        }
       </p>
     </div>
   );

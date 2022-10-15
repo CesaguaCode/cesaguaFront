@@ -1,6 +1,7 @@
 import { ChangeEventHandler, memo, MouseEventHandler, useId } from "react";
 
 interface props {
+  isInvalid: boolean
   label: string;
   name?: string
   type: string;
@@ -9,7 +10,7 @@ interface props {
   handler: ChangeEventHandler;
 }
 
-const LoginInput = ({name, state, label, type, icon, handler }: props) => {
+const LoginInput = ({isInvalid, name, state, label, type, icon, handler }: props) => {
   let id = useId();
 
   return (
@@ -28,7 +29,7 @@ const LoginInput = ({name, state, label, type, icon, handler }: props) => {
       <label className="login-label" htmlFor={id}>
         {label}
       </label>
-      <span className="login-error">Formato no válido</span>
+      <span className={`${"login-error"} ${isInvalid && "active"}`}>Formato no válido</span>
     </div>
   );
 };

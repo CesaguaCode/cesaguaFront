@@ -6,5 +6,5 @@ export const ProtectedRoute = () => {
   // TODO: Verificar bien al usuario
   const {user} = useUser();
   
-  return user ? <Outlet /> : <Navigate to="/" />;
+  return user && user.role === 0 ? <Navigate to="/" /> : <Outlet />;
 };

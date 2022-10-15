@@ -1,8 +1,9 @@
 import useInterceptor from "../../hooks/useInterceptor";
+import { BACK_HOST } from "../../utils/Constants";
 import { Pin } from "./../../models/Pin";
 
 const pinsService = () => {
-  const URL: string = "http://localhost:3200/pin";
+  const URL: string =`${BACK_HOST}/pin`;
 
   const { getData, deleteData, postData, putData } = useInterceptor();
 

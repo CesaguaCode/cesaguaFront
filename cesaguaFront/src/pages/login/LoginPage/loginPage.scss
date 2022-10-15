@@ -76,6 +76,12 @@
     bottom: -1.5em;
     right: 0;
     color: var(--clr-danger);
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.login-error.active{
+    opacity: 1;
 }
 
 .login__btn-submit{

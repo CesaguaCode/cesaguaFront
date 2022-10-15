@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import LoginInput from "./components/LoginInput";
-import useLogin from "./useLogin";
+import useLogin from "../useLogin";
 
 import "./loginPage.scss";
+import { useState } from "react";
 
 const LoginPage = () => {
-  const { handleSubmit, handleInput, loginData } = useLogin();
+  const { handleSubmit, handleInput, loginData, validatedFields } = useLogin();
+
+  
+
 
   return (
     <>
@@ -14,6 +18,7 @@ const LoginPage = () => {
           <h2 className="login-title">Iniciar sesión</h2>
 
           <LoginInput
+            isInvalid={validatedFields.email}
             state={loginData.email}
             type="email"
             icon="i__user"
@@ -22,6 +27,7 @@ const LoginPage = () => {
           ></LoginInput>
 
           <LoginInput
+            isInvalid={validatedFields.password}
             state={loginData.password}
             type="password"
             icon="i__lock"

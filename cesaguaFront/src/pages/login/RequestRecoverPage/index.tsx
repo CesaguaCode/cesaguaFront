@@ -4,7 +4,7 @@ import useRecover from "./useRecover";
 import "./requestRecoverPage.scss";
 
 const RequestRecoverPage = () => {
-  const { handleSubmit, email, handleInput } = useRecover();
+  const { handleSubmit, email, handleInput, validatedFields } = useRecover();
 
   return (
     <>
@@ -13,6 +13,7 @@ const RequestRecoverPage = () => {
           <h2 className="recovery-title">Recuperar contraseña</h2>
 
           <LoginInput
+            isInvalid={validatedFields}
             state={email}
             type="email"
             icon="i__user"

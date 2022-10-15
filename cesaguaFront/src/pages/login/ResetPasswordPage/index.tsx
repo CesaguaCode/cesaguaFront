@@ -4,7 +4,7 @@ import useReset from "./useReset";
 import "./requestResetPage.scss";
 
 const ResetPasswordPage = () => {
-  const {handleSubmit, handleInput, loginData} = useReset();
+  const {handleSubmit, handleInput, loginData, validatedFields} = useReset();
 
   return (
     <section className="login-container">
@@ -12,6 +12,7 @@ const ResetPasswordPage = () => {
         <h2 className="recovery-title">Recuperar contraseña</h2>
 
         <LoginInput
+          isInvalid = {validatedFields.password}
           state={loginData.password}
           type="password"
           icon="i__lock"
@@ -21,6 +22,7 @@ const ResetPasswordPage = () => {
         ></LoginInput>
 
         <LoginInput
+          isInvalid = {validatedFields.repassword}
           state={loginData.repassword}
           type="password"
           icon="i__lock"

@@ -1,8 +1,9 @@
 import useInterceptor from "../../hooks/useInterceptor";
+import { BACK_HOST } from "../../utils/Constants";
 import { Milestone } from "./../../models/Milestone";
 
 const milsetoneService = () => {
-  const URL: string = "http://localhost:3200/milestone";
+  const URL: string = `${BACK_HOST}/milestone`;
 
   const { getData, deleteData, postData, putData } = useInterceptor();
 

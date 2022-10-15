@@ -22,7 +22,8 @@ import ServicesTablePage from "../pages/services/ServicesTablePage";
 
 import PinsListPage from "../pages/pins/PinsListPage/PinsListPage";
 import PinsCreatePage from "../pages/pins/PinsCreatePage";
-import PinstTablePage from "../pages/pins/PinsTablePage";
+import PinsTablePage from "../pages/pins/PinsTablePage";
+import { UnprotectedRoute } from "../utils/UnprotectedRoute";
 
 const AuthRouter = () => {
   /**
@@ -37,10 +38,12 @@ const AuthRouter = () => {
       <Route path="/pins" element={<PinsListPage />}></Route>
       <Route path="/services" element={<ServicesListPage />}></Route>
       <Route path="/services/*" element={<ServiceDetailPage />}></Route>
-      <Route path="/" element={<AnimatedWaves />}>
-        <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/recover" element={<RequestRecoverPage />}></Route>
-        <Route path="/reset" element={<ResetPasswordPage />}></Route>
+      <Route path="/" element={<UnprotectedRoute />}>
+        <Route path="/" element={<AnimatedWaves />}>
+          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/recover" element={<RequestRecoverPage />}></Route>
+          <Route path="/reset" element={<ResetPasswordPage />}></Route>
+        </Route>
       </Route>
       // TODO: Eliminar en produccion
       <Route path="/icons" element={<IconsPage></IconsPage>}></Route>
@@ -53,8 +56,6 @@ const AuthRouter = () => {
    */
   const PrivateRoutes = () => (
     <>
-      <Route path="/auth" element={<h1>Privado</h1>}></Route>
-
       <Route path="/milestones/crud" element={<MilestonesTablePage />}></Route>
       <Route
         path="/milestones/create"
@@ -67,7 +68,7 @@ const AuthRouter = () => {
 
       <Route path="/services/crud" element={<ServicesTablePage />}></Route>
 
-      <Route path="/pins/crud" element={<PinstTablePage />}></Route>
+      <Route path="/pins/crud" element={<PinsTablePage />}></Route>
       <Route path="/pins/create" element={<PinsCreatePage />}></Route>
       <Route path="/pins/edit/:id" element={<PinsCreatePage />}></Route>
     </>
