@@ -1,10 +1,34 @@
 import LoginInput from "../LoginPage/components/LoginInput";
 import useReset from "./useReset";
+import jwt_decode from "jwt-decode";
 
 import "./requestResetPage.scss";
+import { useNavigate, useParams } from "react-router-dom";
+import AlertSystem from "../../../utils/AlertSystem";
 
 const ResetPasswordPage = () => {
+
+  const navigate = useNavigate();
+
   const {handleSubmit, handleInput, loginData, validatedFields} = useReset();
+
+  const {toastAlert} = AlertSystem();
+
+  let {token} = useParams();
+  token = token?.replaceAll("~",".");
+  const userData: any = jwt_decode(token || "");
+
+  console.log(userData);
+
+
+
+  if (Date.now() >= userData.exp * 1000) {
+    console.log("Expired Token");
+    toastAlert("Este vínculo ha expirado", "error")
+    navigate("/")
+  }
+  
+  
 
   return (
     <section className="login-container">

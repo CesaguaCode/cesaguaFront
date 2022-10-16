@@ -1,5 +1,6 @@
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import { ProtectedRoute } from "../utils/ProtectedRoute";
+import { UnprotectedRoute } from "../utils/UnprotectedRoute";
 
 import IconsPage from "../pages/general/IconsPage/Index";
 
@@ -23,70 +24,66 @@ import ServicesTablePage from "../pages/services/ServicesTablePage";
 import PinsListPage from "../pages/pins/PinsListPage/PinsListPage";
 import PinsCreatePage from "../pages/pins/PinsCreatePage";
 import PinsTablePage from "../pages/pins/PinsTablePage";
-import { UnprotectedRoute } from "../utils/UnprotectedRoute";
 
 const AuthRouter = () => {
+
   /**
    * This mehod contains the public routes of the app
    * @returns Public routes of the app
    */
-  const PublicRoutes = () => (
-    <>
+  const PublicRoutes = () => <>
       <Route path="/" element={<IndexPage></IndexPage>}></Route>
       <Route path="/sitemap" element={<SitemapPage></SitemapPage>}></Route>
       <Route path="/milestones" element={<MilestonesListPage />}></Route>
       <Route path="/pins" element={<PinsListPage />}></Route>
       <Route path="/services" element={<ServicesListPage />}></Route>
       <Route path="/services/*" element={<ServiceDetailPage />}></Route>
-      <Route path="/" element={<UnprotectedRoute />}>
-        <Route path="/" element={<AnimatedWaves />}>
-          <Route path="/login" element={<LoginPage />}></Route>
-          <Route path="/recover" element={<RequestRecoverPage />}></Route>
-          <Route path="/reset" element={<ResetPasswordPage />}></Route>
-        </Route>
-      </Route>
       // TODO: Eliminar en produccion
       <Route path="/icons" element={<IconsPage></IconsPage>}></Route>
     </>
-  );
 
   /**
    * This mehod contains the private routes of the app
    * @returns Private routes of the app
    */
-  const PrivateRoutes = () => (
-    <>
-      <Route path="/milestones/crud" element={<MilestonesTablePage />}></Route>
-      <Route
-        path="/milestones/create"
-        element={<MilestonesCreatePage />}
-      ></Route>
-      <Route
-        path="/milestones/edit/:id"
-        element={<MilestonesCreatePage />}
-      ></Route>
+  const PrivateRoutes = () => <>
+      <Route path="/milestones/crud" element={<MilestonesTablePage />}/>
+      <Route path="/milestones/create" element={<MilestonesCreatePage />}/>
+      <Route path="/milestones/edit/:id" element={<MilestonesCreatePage />}/>
 
-      <Route path="/services/crud" element={<ServicesTablePage />}></Route>
+      <Route path="/services/crud" element={<ServicesTablePage />}/>
 
-      <Route path="/pins/crud" element={<PinsTablePage />}></Route>
-      <Route path="/pins/create" element={<PinsCreatePage />}></Route>
-      <Route path="/pins/edit/:id" element={<PinsCreatePage />}></Route>
+      <Route path="/pins/crud" element={<PinsTablePage />}/>
+      <Route path="/pins/create" element={<PinsCreatePage />}/>
+      <Route path="/pins/edit/:id" element={<PinsCreatePage />}/>
     </>
-  );
+
+  const LoginRoutes = () => <>
+        <Route path="/" element={<AnimatedWaves />}>
+          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/recover" element={<RequestRecoverPage />}></Route>
+          <Route path="/reset/:token" element={<ResetPasswordPage />}></Route>
+        </Route>
+      </>
 
   return (
     <Router>
       <Routes>
         <Route path="/" element={<PageTemplate />}>
           {PublicRoutes()}
-
           <Route path="/" element={<ProtectedRoute />}>
             {PrivateRoutes()}
+          </Route>
+
+          
+          <Route path="/" element={<UnprotectedRoute />}>
+            {LoginRoutes()}
           </Route>
 
           <Route path="/" element={<AnimatedWaves />}>
             <Route path="*" element={<Error404Page />} />
           </Route>
+          
         </Route>
       </Routes>
     </Router>

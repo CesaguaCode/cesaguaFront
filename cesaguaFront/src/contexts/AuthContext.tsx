@@ -16,6 +16,27 @@ const AuthContext = createContext<
 
 const useUser = () => {
   const [user, setUser] = useContext(AuthContext) as any;
+
+  const { isValidToken } = loginService();
+  const token = localStorage.getItem("token");
+
+  const fetchToken = async () => {
+    const res = await isValidToken(token);
+   
+      if (res.status !== 200) {
+        localStorage.removeItem("token");
+      }
+
+      const userData: any = jwt_decode(token || "");
+      setUser(userData.auth);
+   
+  }
+
+  useEffect( () => {
+    token && fetchToken()
+  }, []);
+
+
   return { user, setUser };
 };
 
@@ -24,22 +45,9 @@ interface props {
 }
 
 const UserProvider = ({ children }: props) => {
-  const { isValidToken } = loginService();
-  const authUser = useState<User>({ rol: 0 });
-
-  const token = localStorage.getItem("token");
-
-  useEffect(() => {
-    token && isValidToken(token).then((res) => {
-      if (res.status !== 200) {
-        localStorage.removeItem("token");
-      }
-
-      const userData: any = jwt_decode(token || "");
-      authUser[1](userData.auth);
-    });
-  }, []);
-
+ 
+  const authUser = useState<User>({});
+ 
   return (
     <AuthContext.Provider value={authUser}>{children}</AuthContext.Provider>
   );

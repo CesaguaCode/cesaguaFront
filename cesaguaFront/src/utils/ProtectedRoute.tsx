@@ -1,10 +1,9 @@
 
-import { Navigate, Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useUser } from "../contexts/AuthContext";
 
 export const ProtectedRoute = () => {
-  // TODO: Verificar bien al usuario
-  const {user} = useUser();
-  
-  return user && user.role === 0 ? <Navigate to="/" /> : <Outlet />;
+  const { user } = useUser();
+  return <Outlet />;
 };
