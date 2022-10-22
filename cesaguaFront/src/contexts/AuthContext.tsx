@@ -22,20 +22,18 @@ const useUser = () => {
 
   const fetchToken = async () => {
     const res = await isValidToken(token);
-   
-      if (res.status !== 200) {
-        localStorage.removeItem("token");
-      }
 
-      const userData: any = jwt_decode(token || "");
-      setUser(userData.auth);
-   
-  }
+    if (res.status !== 200) {
+      localStorage.removeItem("token");
+    }
 
-  useEffect( () => {
-    token && fetchToken()
+    const userData: any = jwt_decode(token || "");
+    setUser(userData.auth);
+  };
+
+  useEffect(() => {
+    token && fetchToken();
   }, []);
-
 
   return { user, setUser };
 };
@@ -45,9 +43,8 @@ interface props {
 }
 
 const UserProvider = ({ children }: props) => {
- 
   const authUser = useState<User>({});
- 
+
   return (
     <AuthContext.Provider value={authUser}>{children}</AuthContext.Provider>
   );

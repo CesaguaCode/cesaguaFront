@@ -5,12 +5,13 @@ import jwt_decode from "jwt-decode";
 import "./requestResetPage.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import AlertSystem from "../../../utils/AlertSystem";
+import { useEffect } from "react";
 
 const ResetPasswordPage = () => {
 
   const navigate = useNavigate();
 
-  const {handleSubmit, handleInput, loginData, validatedFields} = useReset();
+  const {handleSubmit, handleInput, loginData, validatedFields, setValidatedFields} = useReset();
 
   const {toastAlert} = AlertSystem();
 
@@ -18,21 +19,46 @@ const ResetPasswordPage = () => {
   token = token?.replaceAll("~",".");
   const userData: any = jwt_decode(token || "");
 
-  console.log(userData);
+  
+  const hasExpired = () => Date.now() > userData.exp * 1000;
 
+  useEffect(() => {
+    hasExpired();
 
+    if(hasExpired()){
+      toastAlert("Este vínculo ha expirado", "error")
+      return navigate("/")
+    }
 
-  if (Date.now() >= userData.exp * 1000) {
-    console.log("Expired Token");
-    toastAlert("Este vínculo ha expirado", "error")
-    navigate("/")
+    
+  }, [])
+
+  const validate = (e:any) => {
+    e.preventDefault()
+    
+    setValidatedFields({password:!loginData.password,repassword:!loginData.repassword})
+
+    if(!loginData.password){
+      toastAlert("Debe ingresar una contraseña", "error");
+      return
+    }
+    
+    if( (loginData.password !== loginData.repassword)){
+      toastAlert("Las contraseñas no coinciden", "error");
+      return
+    }
+
+    // TODO: Validar envio, cambio y redireccionamiento
+    console.log(userData.auth.id, loginData.password);
+    
   }
   
-  
 
+
+  
   return (
     <section className="login-container">
-      <form className="login-card" method="POST" onSubmit={handleSubmit}>
+      <form className="login-card" method="POST" onSubmit={validate}>
         <h2 className="recovery-title">Recuperar contraseña</h2>
 
         <LoginInput

@@ -23,6 +23,6 @@ const CONVERT_DATE_EDIT = (strDate:string) => {
   return `${date.getFullYear()}-${ (date.getMonth()+1) > 9 ? date.getMonth()+1 : "0"+(date.getMonth()+1)}`
 }
 
-const BACK_HOST = "http://192.168.100.17:3200";
+const BACK_HOST = "http://localhost:3200";
 
 export {BACK_HOST, MONTHS, CONVERT_DATE_CARD, CONVERT_DATE_EDIT}

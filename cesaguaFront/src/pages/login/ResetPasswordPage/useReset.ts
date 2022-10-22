@@ -21,7 +21,7 @@ const useReset = () => {
     e.preventDefault();
   };
 
-  return { handleSubmit, loginData, validatedFields, handleInput };
+  return { setValidatedFields, handleSubmit, loginData, validatedFields, handleInput };
 };
 
 export default useReset;
