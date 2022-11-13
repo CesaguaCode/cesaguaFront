@@ -4,13 +4,13 @@
   justify-content: center;
   align-items: center;
   font-size: 1.2em;
-  height: 70vh;
+ 
   overflow: hidden;
 }
 
 .page404-detail {
   text-align: center;
-  margin-top: 4em;
+  margin-top: 2em;
   animation: fadeInUp 1s;
 }
 
@@ -53,8 +53,7 @@
   }
 
   .page404-img {
-    height: 45%;
-    width: 35%;
+    display: none;
   }
 
   .page404-error {

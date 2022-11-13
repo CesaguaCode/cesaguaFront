@@ -24,6 +24,7 @@ import ServicesTablePage from "../pages/services/ServicesTablePage";
 import PinsListPage from "../pages/pins/PinsListPage/PinsListPage";
 import PinsCreatePage from "../pages/pins/PinsCreatePage";
 import PinsTablePage from "../pages/pins/PinsTablePage";
+import ServiceCreatePage from "../pages/services/ServicesCreatePage";
 
 const AuthRouter = () => {
 
@@ -52,6 +53,7 @@ const AuthRouter = () => {
       <Route path="/milestones/edit/:id" element={<MilestonesCreatePage />}/>
 
       <Route path="/services/crud" element={<ServicesTablePage />}/>
+      <Route path="/services/create" element={<ServiceCreatePage />}/>
 
       <Route path="/pins/crud" element={<PinsTablePage />}/>
       <Route path="/pins/create" element={<PinsCreatePage />}/>

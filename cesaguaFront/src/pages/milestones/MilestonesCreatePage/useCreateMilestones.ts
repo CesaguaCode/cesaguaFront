@@ -146,15 +146,15 @@ const useCreateMilestones = () => {
   const handlePicture = async (event: any) => {
     const file = event.target.files[0];
 
-    if (!file.type.includes("image")) {
-      return toastAlert("No es una imagen válida", "error");
-    }
-
     if (!file) {
       setMilestoneData((prev: any) => {
         return { ...prev, image: "" };
       });
       return;
+    }
+
+    if (!file.type.includes("image")) {
+      return toastAlert("No es una imagen válida", "error");
     }
 
     const resized = await downscaleImage(file);

@@ -2,7 +2,7 @@
   background-color: var(--clr-white);
   padding: 1em 2em;
   text-align: center;
-  margin-top: 2em;
+  margin-top: 1em;
   box-shadow: 0px 10px 50px 3px var(--clr-light-gray);
   border-radius: var(--border-radius-s);
   animation: fadeInDown 1s;
@@ -15,7 +15,7 @@
   color: var(--clr-logo-green);
   border-bottom: 2px solid var(--clr-logo-green);
   width: fit-content;
-  margin: 1em auto;
+  margin: .5rem auto;
 }
 
 .table-header__inputs-container {
@@ -116,3 +116,9 @@
   }
 }
 
+
+@media screen and (max-width: 600px) {
+  .table-header__title {
+    font-size: 1.5em;
+  }
+}

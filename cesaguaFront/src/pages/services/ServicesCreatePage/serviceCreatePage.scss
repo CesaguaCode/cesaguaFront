@@ -1,0 +1,54 @@
+
+.service__contact-select{
+    width: clamp( 250px, 60%, 600px);
+    padding: 1em;
+    border-radius: var(--border-radius-s);
+    border: transparent;
+    box-shadow: 0 0 10px 2px var(--clr-light-gray);
+}
+
+.service__input-title{
+    width: fit-content;
+    position: relative;
+    font-size: 1em;
+    background-color: transparent;
+    border: none;
+    outline: none; 
+    font-family: roboto;
+}
+
+.service__text-area{
+    background-color: transparent;
+    border: 1px dashed var(--clr-light-gray);
+    resize: none;
+    width: 90%;
+    max-width: 800px;
+    min-height: 8em;
+    margin: 2em auto 3em auto;
+    font-family: roboto;
+}
+
+.service__text-area:focus{
+    outline: none;
+    border: 1px dashed var(--clr-logo-orange);
+}
+
+.service-remove__extra{
+    color: var(--clr-white);
+    background-color: var(--clr-danger);
+    position: absolute;
+    left: 95%;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.add_service-extra{
+    background-color: var(--clr-logo-blue);
+    color: var(--clr-white);
+    border-radius: var(--border-radius-s);
+    padding: 1em 4em;
+}
+
+.service-create__img{
+    cursor: pointer;
+}
