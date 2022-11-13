@@ -12,8 +12,17 @@ const useImageSystem = () => {
 
   const downscaleImage = useCallback(async (file: any) => {
     const dataUrl:string = await convertBase64(file);
+    return rescaleImage(dataUrl, 1024);
+  }, []);
+
+  const thumbnailImage = useCallback(async (file: any) => {
+    return rescaleImage(file, 256);
+  }, []);
+
+  const rescaleImage = useCallback(async (dataUrl: any, size: number) => {
+    
     // If the size is less than 0.5mb will return without converting the file
-    const newWidth:number = 1024;
+    const newWidth:number = size;
     const image: HTMLImageElement = new Image();
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
@@ -33,7 +42,10 @@ const useImageSystem = () => {
     return newDataUrl;
   }, []);
 
-  return { downscaleImage };
+
+  return { downscaleImage, thumbnailImage };
 };
+
+
 
 export default useImageSystem;

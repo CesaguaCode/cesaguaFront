@@ -1,9 +1,5 @@
-
-import { useState } from 'react';
-
 const useInterceptor = () => {
  
-
   const getData = async (url: string) => {
     const data = await fetch(url).then((data) => data.json());
     return data;

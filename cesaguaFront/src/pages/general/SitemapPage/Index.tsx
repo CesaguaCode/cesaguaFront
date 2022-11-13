@@ -17,7 +17,7 @@ const SitemapPage = () => {
           {links.childs.map(({title, icon, link, childs}) => 
             <div className="page-group" key={title}>
               <MapCard title={title} icon={icon} link={link} />
-                { childs && <MapCardsSection links={childs}/> }
+                { childs && <MapCardsSection links={[]}/> }
             </div>
           )}
 

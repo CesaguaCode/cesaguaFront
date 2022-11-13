@@ -38,7 +38,8 @@ const AuthRouter = () => {
       <Route path="/milestones" element={<MilestonesListPage />}></Route>
       <Route path="/pins" element={<PinsListPage />}></Route>
       <Route path="/services" element={<ServicesListPage />}></Route>
-      <Route path="/services/*" element={<ServiceDetailPage />}></Route>
+      <Route path="/services/:id" element={<ServiceDetailPage />}></Route>
+      
       // TODO: Eliminar en produccion
       <Route path="/icons" element={<IconsPage></IconsPage>}></Route>
     </>
@@ -54,6 +55,7 @@ const AuthRouter = () => {
 
       <Route path="/services/crud" element={<ServicesTablePage />}/>
       <Route path="/services/create" element={<ServiceCreatePage />}/>
+      
 
       <Route path="/pins/crud" element={<PinsTablePage />}/>
       <Route path="/pins/create" element={<PinsCreatePage />}/>

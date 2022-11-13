@@ -1,5 +1,5 @@
 const useMemory = () => {
-  const lifetime = 1;
+  const lifetime = 0.5;
 
   
   const obtainMemory = (element: string) => {

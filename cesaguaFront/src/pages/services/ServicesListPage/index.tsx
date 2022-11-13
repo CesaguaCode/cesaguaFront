@@ -1,25 +1,43 @@
+import { useEffect, useRef, useState } from "react";
+import useMemory from "../../../hooks/useMemory";
+import serviceService from "../serviceService";
 import ServiceCard from "./components/ServiceCard";
 import ServiceHeading from "./components/ServiceHeading";
 import "./servicesListPage.scss";
 
 const ServicesListPage = () => {
+  const { getAll } = serviceService();
+  const { obtainMemory, updateMemory } = useMemory();
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    // We load what is memorized if the time limit has not passed.
+    const memorizedMilestones = obtainMemory("milestones");
+
+    if (memorizedMilestones!.state) {
+      setServices(memorizedMilestones!.data);
+    } else {
+      getAll()
+        .then((response) => {
+          updateMemory("services", response.data);
+          setServices(response.data);
+        })
+        .catch(() => {
+          setServices([]);
+        });
+    }
+  }, []);
+
   return (
     <section>
-        <ServiceHeading />
+      <ServiceHeading />
 
-
-        <div className="service-card-container">
-        {
-            [1,2,3,4,5].map((id) => 
-               <ServiceCard key={id} />
-            )
-                
-            
-        }
-        </div>
-
+      <div className="service-card-container">
+        {services.map((service:any) => (
+          <ServiceCard key={service.id} service={service} />
+        ))}
+      </div>
     </section>
-      
   );
 };
 

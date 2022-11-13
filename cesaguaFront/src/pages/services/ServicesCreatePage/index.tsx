@@ -1,18 +1,26 @@
 import placeholder from "../../../assets/images/imageUpload.svg";
-
+import { useNavigate, useParams } from "react-router-dom";
 import React, { useState } from "react";
 import ContactCard from "../ServicesDetailPage/components/ContactCard";
 
-import contacts from "./contacts.json";
+import contacts from "../contacts.json";
 import EditableServiceExtra from "./EditableServiceExtra";
 
 import "./serviceCreatePage.scss";
 import useImageSystem from "../../../hooks/useImageSystem";
 import AlertSystem from "../../../utils/AlertSystem";
+
+const { promiseAlert, toastAlert } = AlertSystem();
+
 const ServiceCreatePage = () => {
+
+  const navigate = useNavigate();
+  const params = useParams();
+
+  const { id } = params;
   const [image, setImage] = useState("");
 
-  const { downscaleImage } = useImageSystem();
+  const { downscaleImage, thumbnailImage } = useImageSystem();
   const { toastAlert } = AlertSystem();
 
   const [selectedContact, setSelectedContact] = useState(contacts[0].id);
@@ -30,14 +38,8 @@ const ServiceCreatePage = () => {
 
   const handleDelete = (id: number) => {
     console.log(id);
-
-    setServiceExtras((prev: any) => {
-      console.log(prev[id]);
-      const actual = prev.splice(id, 1);
-      
-
-      return [...prev];
-    });
+    const actual = serviceExtras.filter((extra:any) => extra.title != id);
+    setServiceExtras(actual);
   };
 
   const handleInput = (e: any) => {
@@ -62,6 +64,77 @@ const ServiceCreatePage = () => {
       });
     }
   };
+
+  const handleAdd = async () => {
+    
+    if(!validateData()){
+      return 
+    }
+ 
+    // Remove empty extras
+    const validExtras = serviceExtras.filter((service:any) => service.title && service.description)
+   
+
+    const service = {
+      title: mainData.main_title, 
+      description: mainData.main_description, 
+      details: validExtras,
+      image: image,
+      thumbnail: await thumbnailImage(image),
+      contactId: selectedContact
+    }
+
+    console.log(service)
+
+
+  }
+
+  const validateData = () => {
+
+
+    if (!mainData.main_title) {
+      //shakeInput(titleRef);
+      toastAlert("Debe agregar un título principal", "error");
+      return false;
+    }
+
+    if (!mainData.main_description) {
+      //shakeInput(dateRef);
+      toastAlert("Debe agregar una descripción principal", "error");
+      return false;
+    }
+
+    if (!image) {
+      //shakeInput(descriptionRef);
+      toastAlert("Debe agregar una imagen", "error");
+      return false;
+    }
+
+    if (serviceExtras.filter((service:any) => (service.title && !service.description) ).length > 0) {
+      toastAlert("Hay un extra sin descripción", "error");
+      return false;
+    }
+
+    if (serviceExtras.filter((service:any) => (!service.title && service.description) ).length > 0) {
+      toastAlert("Hay un extra sin título", "error");
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleGoBack = () => {
+    if (mainData.main_description || mainData.main_title || image || serviceExtras.length > 0) {
+      promiseAlert(
+        "Atención",
+        `Seguro desea cancelar,  ${
+          id ? "el servicio no se modificará" : "perderá los datos agregados"
+        }`
+      ).then((result: any) => result.isConfirmed && navigate(-1));
+    } else {
+      navigate(-1);
+    }
+  }
 
   const addExtra = () => {
     setServiceExtras((prev: any) => [...prev, { title: "", description: "" }]);
@@ -172,10 +245,10 @@ const ServiceCreatePage = () => {
             ></ContactCard>
 
             <div className="milestones-create__button-container">
-              <button className="btn btn-cancel" onClick={() => {}}>
+              <button className="btn btn-cancel" onClick={handleGoBack}>
                 Cancelar
               </button>
-              <button className="btn btn-save" onClick={() => {}}>
+              <button className="btn btn-save" onClick={handleAdd}>
                 Guardar
               </button>
             </div>
