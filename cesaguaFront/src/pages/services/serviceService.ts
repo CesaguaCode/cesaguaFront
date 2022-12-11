@@ -1,6 +1,6 @@
 import useInterceptor from "../../hooks/useInterceptor";
 import { BACK_HOST } from "../../utils/Constants";
-import { Milestone } from "./../../models/Milestone";
+import { Service } from "./../../models/Service";
 
 const serviceService = () => {
   const URL: string = `${BACK_HOST}/service`;
@@ -19,12 +19,14 @@ const serviceService = () => {
     return await deleteData(`${URL}/${id}`);
   };
 
-  const createOne = async (milestone: Milestone) => {
-    return await postData(URL, milestone);
+  const createOne = async (service: Service) => {
+    console.log(service)
+    return await postData(URL, service);
+   
   };
 
-  const updateOne = async (milestone: Milestone) => {
-    return await putData(`${URL}/${milestone.id}`, milestone);
+  const updateOne = async (service: Service) => {
+    return await putData(`${URL}/${service.id}`, service);
   };
 
   return { getAll, getOne, deleteOne, createOne, updateOne};

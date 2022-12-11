@@ -9,6 +9,7 @@ import jwt_decode from "jwt-decode";
 
 import User from "../models/User";
 import loginService from "../pages/login/loginService";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const AuthContext = createContext<
   [User, React.Dispatch<SetStateAction<User>>] | null
@@ -16,6 +17,7 @@ const AuthContext = createContext<
 
 const useUser = () => {
   const [user, setUser] = useContext(AuthContext) as any;
+  const navigate = useNavigate()
 
   const { isValidToken } = loginService();
   const token = localStorage.getItem("token");
@@ -31,11 +33,17 @@ const useUser = () => {
     setUser(userData.auth);
   };
 
+  const logout = () => {
+    setUser({})
+    localStorage.removeItem("token");
+    navigate("/login")
+  }
+
   useEffect(() => {
     token && fetchToken();
   }, []);
 
-  return { user, setUser };
+  return { user, setUser, logout };
 };
 
 interface props {

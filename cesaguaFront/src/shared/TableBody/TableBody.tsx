@@ -7,11 +7,13 @@ interface props {
     handleCard: any
 }
 
-const TableBody = ({elements, handleCard}:props) => {
+const TableBody = ({elements, handleCard}:props) => {+
+  console.log(elements);
+  
   return (
     <main className="milestones-table__body">
-      {elements.map((element) => (
-        <TableCard key={element.id} {...element} handler={handleCard} />
+      {elements && elements.map((element) => (
+        <TableCard key={element.id} {...element} thumbnail={element.thumbnail || element.image} handler={handleCard} />
       ))}
     </main>
   );

@@ -9,8 +9,6 @@ const PinsListPage = () => {
 
   const {pins}:any= usePins()
 
- 
-  
   const [search, setSearch] = useState("");
   const [map, setMap] = useState<any>(null);
 
@@ -18,7 +16,7 @@ const PinsListPage = () => {
     const query = e.target.value;
     setSearch(query);
     const coincidences: any = pins.filter((marker:any) =>
-      marker.name.toLowerCase().includes(query.toLowerCase())
+      marker.name.toLowerCase()==(query.toLowerCase())
     );
 
     if (query === "" || coincidences.length === 0) {
@@ -27,7 +25,8 @@ const PinsListPage = () => {
     }
 
     const searchedPin = coincidences[0];
-
+    console.log(searchedPin);
+    
     map.flyTo(searchedPin.position, 12);
   };
 

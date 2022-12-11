@@ -26,6 +26,27 @@ const AlertSystem = () => {
     });
   };
 
+  const promiseSimpleAlert = async (title: string, detail?: string) => {
+    return new Promise((res) => {
+      MySwal.fire({
+        title: title,
+        text: detail,
+        confirmButtonText: "Confirmar",
+        customClass: {
+          confirmButton: "confirm-alert",
+        },
+        showCancelButton: false,
+        showCloseButton: false,
+        showClass: {
+          popup: "animate__animated animate__fadeInLeft",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutRight",
+        },
+      }).then((response) => res(response));
+    });
+  };
+
   const promiseAlert = async (title: string, detail?: string) => {
     return new Promise((res) => {
       MySwal.fire({
@@ -67,7 +88,7 @@ const AlertSystem = () => {
     });
   };
 
-  return { simpleAlert, promiseAlert, toastAlert };
+  return { simpleAlert, promiseAlert, toastAlert, promiseSimpleAlert };
 };
 
 export default AlertSystem;

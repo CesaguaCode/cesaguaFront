@@ -6,20 +6,14 @@ import "./requestRecoverPage.scss";
 const RequestRecoverPage = () => {
   const { handleSubmit, email, handleInput, validatedFields } = useRecover();
 
+  const inputData = { isInvalid:validatedFields, state:email, type:"email", icon:"i__user", label:"Correo", handler:handleInput}
+  
   return (
-    <>
       <section className="login-container">
         <form className="login-card" method="POST" onSubmit={handleSubmit}>
           <h2 className="recovery-title">Recuperar contraseña</h2>
 
-          <LoginInput
-            isInvalid={validatedFields}
-            state={email}
-            type="email"
-            icon="i__user"
-            label="Correo"
-            handler={handleInput}
-          ></LoginInput>
+          <LoginInput {...inputData}></LoginInput>
 
           <button className="btn login__btn-submit">Solicitar</button>
 
@@ -28,9 +22,6 @@ const RequestRecoverPage = () => {
           </span>
         </form>
       </section>
-
-    
-    </>
   );
 };
 

@@ -3,9 +3,9 @@ import { FormEvent } from 'react';
 import { useState } from 'react';
 import jwt_decode from "jwt-decode";
 
-import loginService from './loginService';
-import AlertSystem from '../../utils/AlertSystem';
-import { useUser } from '../../contexts/AuthContext';
+import loginService from '../loginService';
+import AlertSystem from '../../../utils/AlertSystem';
+import { useUser } from '../../../contexts/AuthContext';
 
 const useLogin = () => {
     const { validateLogin } = loginService();
@@ -28,9 +28,9 @@ const useLogin = () => {
   
     const handleSubmit = (e: FormEvent) => {
       e.preventDefault();
-
+      
         validateLogin(loginData).then(result => {
-
+          
             if(result.status !== 200){
                 return AlertSystem().toastAlert("Los datos no son válidos","error")
             }

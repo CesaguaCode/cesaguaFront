@@ -12,7 +12,7 @@ const ServicesListPage = () => {
 
   useEffect(() => {
     // We load what is memorized if the time limit has not passed.
-    const memorizedMilestones = obtainMemory("milestones");
+    const memorizedMilestones = obtainMemory("services");
 
     if (memorizedMilestones!.state) {
       setServices(memorizedMilestones!.data);

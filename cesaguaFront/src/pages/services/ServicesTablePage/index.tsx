@@ -2,24 +2,19 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TableBody from "../../../shared/TableBody/TableBody";
 import TableHeader from "../../../shared/TableHeader/TableHeader";
+import useServices from "../useServices";
 
-import services from "./request.json";
+
 
 const ServicesTablePage = () => {
 
   const navigate = useNavigate();
 
-  const [search, setSearch] = useState("");
+  const {handleSearch, search, handleCard, services} = useServices()
 
   const handleAdd = () => {
     navigate("/services/create");
   };
-
-  const handleSearch = (e: any) => {
-    setSearch(e.target.value);
-  };
-
-  const handleCard = (e: any) => {};
 
   return (
     <>

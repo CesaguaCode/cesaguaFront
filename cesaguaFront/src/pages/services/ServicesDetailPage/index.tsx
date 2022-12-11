@@ -31,10 +31,12 @@ const ServiceDetailPage = () => {
           }
           setContact(response.data.contactId)
           setService(response.data);
+          console.log(response.data);
         })
         .catch(() => {
           setService({});
           toastAlert("Error al cargar los datos", "error")
+          navigate(-1)
         });
   
   }, []);
@@ -60,7 +62,7 @@ const ServiceDetailPage = () => {
 
         { 
           service.details && JSON.parse(service.details).map((extra:any, index:number) => 
-            <ServiceExtras key={index} title={extra.title} detail={extra.detail}></ServiceExtras>
+            <ServiceExtras key={index} title={extra.title} description={extra.description}></ServiceExtras>
           )
         }
 

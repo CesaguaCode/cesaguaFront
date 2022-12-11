@@ -55,7 +55,7 @@ const AuthRouter = () => {
 
       <Route path="/services/crud" element={<ServicesTablePage />}/>
       <Route path="/services/create" element={<ServiceCreatePage />}/>
-      
+      <Route path="/services/edit/:id" element={<ServiceCreatePage />}/>
 
       <Route path="/pins/crud" element={<PinsTablePage />}/>
       <Route path="/pins/create" element={<PinsCreatePage />}/>

@@ -8,7 +8,7 @@ interface props {
   title: string;
   date?:string;
   description: string;
-  image: string;
+  thumbnail: string;
   handler: MouseEventHandler;
 }
 
@@ -17,7 +17,7 @@ const TableCard = ({
   title,
   date,
   description,
-  image,
+  thumbnail,
   handler,
 }: props) => {
   const buttons = ["delete", "edit"];
@@ -26,7 +26,7 @@ const TableCard = ({
 
   return (
     <div className="table-card">
-      <img src={image} alt={`Imagen del hito ${title}`} />
+      <img src={thumbnail} alt={`Imagen del hito ${title}`} />
 
       <div className="table-card__details">
         <h2 className="table-card__title">{title}</h2>

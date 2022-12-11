@@ -1,6 +1,6 @@
 import placeholder from "../../../assets/images/imageUpload.svg";
 import { useNavigate, useParams } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ContactCard from "../ServicesDetailPage/components/ContactCard";
 
 import contacts from "../contacts.json";
@@ -9,6 +9,7 @@ import EditableServiceExtra from "./EditableServiceExtra";
 import "./serviceCreatePage.scss";
 import useImageSystem from "../../../hooks/useImageSystem";
 import AlertSystem from "../../../utils/AlertSystem";
+import serviceService from "../serviceService";
 
 const { promiseAlert, toastAlert } = AlertSystem();
 
@@ -22,6 +23,7 @@ const ServiceCreatePage = () => {
 
   const { downscaleImage, thumbnailImage } = useImageSystem();
   const { toastAlert } = AlertSystem();
+  const { createOne, updateOne, getOne} = serviceService();
 
   const [selectedContact, setSelectedContact] = useState(contacts[0].id);
 
@@ -37,9 +39,13 @@ const ServiceCreatePage = () => {
   };
 
   const handleDelete = (id: number) => {
-    console.log(id);
-    const actual = serviceExtras.filter((extra:any) => extra.title != id);
-    setServiceExtras(actual);
+    serviceExtras.splice(id,1)
+   
+    setServiceExtras((prev:any) => {
+      const newExtras = prev
+      console.log(newExtras);
+      return([...newExtras])
+    });
   };
 
   const handleInput = (e: any) => {
@@ -57,10 +63,12 @@ const ServiceCreatePage = () => {
     } else {
       const updated = { ...serviceExtras[e.target.dataset.id] };
       updated[name.split("-")[0]] = value;
-
+      
       setServiceExtras((prev: any) => {
-        prev[e.target.dataset.id] = updated;
-        return prev;
+        
+        const newArray = [...prev]
+        newArray[e.target.dataset.id] = updated;
+        return newArray;
       });
     }
   };
@@ -84,9 +92,23 @@ const ServiceCreatePage = () => {
       contactId: selectedContact
     }
 
-    console.log(service)
+    try {
+      const res = id ? await updateOne({id:parseInt(id), ...service}) : await createOne(service);
 
+      if (res.state === 201 || res.state === 200) {
+        toastAlert(
+          `El servicio se ${id ? "editó" : "creó"} exitosamente`,
+          "success"
+        );
+        navigate("/services/crud");
+      }
+    } catch (error: any) {
 
+      if (error.response && error.response.status === 403) {
+        toastAlert("No tiene permisos para realizar esta acción", "error");
+      }
+    }
+    
   }
 
   const validateData = () => {
@@ -157,6 +179,27 @@ const ServiceCreatePage = () => {
     setImage((prev: any) => resized);
   };
 
+  const getEditable = async (id: number) => {
+    const res = await getOne(id);
+   
+    
+    if (res.state === 200) {
+      setImage(res.data.image);
+      setMainData({main_title: res.data.title, main_description: res.data.description})
+      setSelectedContact(res.data.contactId)
+      setServiceExtras(JSON.parse(res.data.details))
+    } else {
+      toastAlert("Surgió un error al obtener el servicio", "error");
+      return navigate("/services/crud");
+    }
+  };
+
+  useEffect(() => {
+    if (id) {
+      getEditable(parseInt(id));
+    }
+  }, []);
+
   return (
     <React.Fragment>
    
@@ -211,6 +254,8 @@ const ServiceCreatePage = () => {
               key={id}
               handleDelete={handleDelete}
               handleInput={handleInput}
+              title= {extra.title}
+              description= {extra.description}
             />
           );
         })}

@@ -2,7 +2,7 @@ import { useUser } from "../../../contexts/AuthContext";
 
 const IndexPage = () => {
 
-  const { user } = useUser();
+  const { user, logout } = useUser();
 
   return (
     <div>
@@ -10,6 +10,7 @@ const IndexPage = () => {
         {
           JSON.stringify(user)
         }
+        <button onClick={logout}>Logout</button>
       </p>
     </div>
   );
