@@ -17,5 +17,8 @@
   "lock",
   "user",
   "clear",
-  "info"
+  "info",
+  "email",
+  "phone",
+  "clock"
 ]

@@ -17,7 +17,7 @@ const LoginPage = () => {
         <form className="login-card" onSubmit={handleSubmit} method="POST">
           <h2 className="login-title">Iniciar sesión</h2>
 
-          { inputs.map((input)=> <LoginInput {...input}></LoginInput>) }
+          { inputs.map((input,i)=> <LoginInput key={i} {...input}></LoginInput>) }
 
           <button className="btn login__btn-submit">Ingresar</button>
           <hr className="login-hr" />

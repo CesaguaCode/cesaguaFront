@@ -78,5 +78,17 @@
     --image-url: url(../icons/info.svg);
   }
 
+  &email::after {
+    --image-url: url(../icons/email.svg);
+  }
+  
+  &phone::after {
+    --image-url: url(../icons/phone.svg);
+  }
+  
+  &clock::after {
+    --image-url: url(../icons/clock.svg);
+  }
+
 
 }

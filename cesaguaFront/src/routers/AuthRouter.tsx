@@ -25,6 +25,7 @@ import PinsListPage from "../pages/pins/PinsListPage/PinsListPage";
 import PinsCreatePage from "../pages/pins/PinsCreatePage";
 import PinsTablePage from "../pages/pins/PinsTablePage";
 import ServiceCreatePage from "../pages/services/ServicesCreatePage";
+import Contact from "../pages/general/Contact";
 
 const AuthRouter = () => {
 
@@ -40,6 +41,11 @@ const AuthRouter = () => {
       <Route path="/services" element={<ServicesListPage />}></Route>
       <Route path="/services/:id" element={<ServiceDetailPage />}></Route>
       
+      
+      <Route path="/" element={<AnimatedWaves />}>
+        <Route path="/contact" element={<Contact/>}></Route>
+      </Route>
+
       // TODO: Eliminar en produccion
       <Route path="/icons" element={<IconsPage></IconsPage>}></Route>
     </>
