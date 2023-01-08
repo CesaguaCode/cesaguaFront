@@ -8,13 +8,14 @@ const MilestonesListPage = () => {
 
   const { milestones }:any = useMilestones();
 
+  
   return (
     <React.Fragment>
       
       <h1 className="milestones-title">Hitos</h1>
 
         {
-          milestones.map((milestone:any) => <MilestoneSection key={milestone.id} {...milestone}/>)
+          milestones && milestones.map((milestone:any) => <MilestoneSection key={milestone.id} {...milestone}/>)
         }
 
     </React.Fragment>
