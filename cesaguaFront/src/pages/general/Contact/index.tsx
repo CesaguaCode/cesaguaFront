@@ -94,7 +94,6 @@ const Contact = () => {
         </div>
       </div>
 
-     
       <section className="contact__form login-container">
         <form className="login-card" onSubmit={handleSubmit} method="POST">
 

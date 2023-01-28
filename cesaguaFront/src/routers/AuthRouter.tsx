@@ -26,55 +26,62 @@ import PinsCreatePage from "../pages/pins/PinsCreatePage";
 import PinsTablePage from "../pages/pins/PinsTablePage";
 import ServiceCreatePage from "../pages/services/ServicesCreatePage";
 import Contact from "../pages/general/Contact";
+import AdminGuard from "../guards/AdminGuard";
+import { useUser } from "../contexts/AuthContext";
 
 const AuthRouter = () => {
 
+  useUser();
+  
   /**
    * This mehod contains the public routes of the app
    * @returns Public routes of the app
    */
-  const PublicRoutes = () => <>
+  const PublicRoutes = () => (
+    <>
       <Route path="/" element={<IndexPage></IndexPage>}></Route>
       <Route path="/sitemap" element={<SitemapPage></SitemapPage>}></Route>
       <Route path="/milestones" element={<MilestonesListPage />}></Route>
       <Route path="/pins" element={<PinsListPage />}></Route>
       <Route path="/services" element={<ServicesListPage />}></Route>
       <Route path="/services/:id" element={<ServiceDetailPage />}></Route>
-      
-      
       <Route path="/" element={<AnimatedWaves />}>
-        <Route path="/contact" element={<Contact/>}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
       </Route>
-
       // TODO: Eliminar en produccion
       <Route path="/icons" element={<IconsPage></IconsPage>}></Route>
     </>
+  );
 
   /**
    * This mehod contains the private routes of the app
    * @returns Private routes of the app
    */
-  const PrivateRoutes = () => <>
-      <Route path="/milestones/crud" element={<MilestonesTablePage />}/>
-      <Route path="/milestones/create" element={<MilestonesCreatePage />}/>
-      <Route path="/milestones/edit/:id" element={<MilestonesCreatePage />}/>
+  const PrivateRoutes = () => (
+    <Route path="/" element={<AdminGuard />}>
+      <Route path="/milestones/crud" element={<MilestonesTablePage />} />
+      <Route path="/milestones/create" element={<MilestonesCreatePage />} />
+      <Route path="/milestones/edit/:id" element={<MilestonesCreatePage />} />
 
-      <Route path="/services/crud" element={<ServicesTablePage />}/>
-      <Route path="/services/create" element={<ServiceCreatePage />}/>
-      <Route path="/services/edit/:id" element={<ServiceCreatePage />}/>
+      <Route path="/services/crud" element={<ServicesTablePage />} />
+      <Route path="/services/create" element={<ServiceCreatePage />} />
+      <Route path="/services/edit/:id" element={<ServiceCreatePage />} />
 
-      <Route path="/pins/crud" element={<PinsTablePage />}/>
-      <Route path="/pins/create" element={<PinsCreatePage />}/>
-      <Route path="/pins/edit/:id" element={<PinsCreatePage />}/>
+      <Route path="/pins/crud" element={<PinsTablePage />} />
+      <Route path="/pins/create" element={<PinsCreatePage />} />
+      <Route path="/pins/edit/:id" element={<PinsCreatePage />} />
+    </Route>
+  );
+
+  const LoginRoutes = () => (
+    <>
+      <Route path="/" element={<AnimatedWaves />}>
+        <Route path="/login" element={<LoginPage />}></Route>
+        <Route path="/recover" element={<RequestRecoverPage />}></Route>
+        <Route path="/reset/:token" element={<ResetPasswordPage />}></Route>
+      </Route>
     </>
-
-  const LoginRoutes = () => <>
-        <Route path="/" element={<AnimatedWaves />}>
-          <Route path="/login" element={<LoginPage />}></Route>
-          <Route path="/recover" element={<RequestRecoverPage />}></Route>
-          <Route path="/reset/:token" element={<ResetPasswordPage />}></Route>
-        </Route>
-      </>
+  );
 
   return (
     <Router>
@@ -85,7 +92,6 @@ const AuthRouter = () => {
             {PrivateRoutes()}
           </Route>
 
-          
           <Route path="/" element={<UnprotectedRoute />}>
             {LoginRoutes()}
           </Route>
@@ -93,7 +99,6 @@ const AuthRouter = () => {
           <Route path="/" element={<AnimatedWaves />}>
             <Route path="*" element={<Error404Page />} />
           </Route>
-          
         </Route>
       </Routes>
     </Router>
