@@ -5,7 +5,7 @@ import useMilestones from "../useMilestones";
 import "./MilestonesTablePage.scss";
 
 const MilestonesTablePage = () => {
-  const { search, milestones, handleAdd, handleSearch, handleCard } =
+  const { search, milestones,filtered, handleAdd, handleSearch, handleCard } =
     useMilestones();
 
   return (
@@ -18,7 +18,7 @@ const MilestonesTablePage = () => {
           handleSearch={handleSearch}
         />
 
-        <TableBody elements={milestones} handleCard={handleCard}></TableBody>
+        <TableBody elements={filtered ? filtered : milestones} handleCard={handleCard}></TableBody>
       </section>
     </>
   );

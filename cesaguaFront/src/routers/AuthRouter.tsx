@@ -26,20 +26,22 @@ import PinsCreatePage from "../pages/pins/PinsCreatePage";
 import PinsTablePage from "../pages/pins/PinsTablePage";
 import ServiceCreatePage from "../pages/services/ServicesCreatePage";
 import Contact from "../pages/general/Contact";
+import AdminGuard from "../guards/AdminGuard";
+import { useUser } from "../contexts/AuthContext";
 
 import HomepageIndex from "../pages/HomePage/HomepageIndex";
-
 import OrganizationCreate from "../pages/organization/OrganizationCreate"
 
 const AuthRouter = () => {
+  useUser();
+  
   /**
    * This mehod contains the public routes of the app
    * @returns Public routes of the app
    */
   const PublicRoutes = () => (
     <>
-      <Route path="/" element={<HomepageIndex></HomepageIndex>}></Route>
-      <Route path="/index" element={<IndexPage></IndexPage>}></Route>
+      <Route path="/" element={<IndexPage></IndexPage>}></Route>
       <Route path="/sitemap" element={<SitemapPage></SitemapPage>}></Route>
       <Route path="/milestones" element={<MilestonesListPage />}></Route>
       <Route path="/pins" element={<PinsListPage />}></Route>
@@ -50,6 +52,7 @@ const AuthRouter = () => {
       </Route>
       // TODO: Eliminar en produccion
       <Route path="/icons" element={<IconsPage></IconsPage>}></Route>
+      <Route path="/organization/create" element={<OrganizationCreate />} />
     </>
   );
 
@@ -58,7 +61,7 @@ const AuthRouter = () => {
    * @returns Private routes of the app
    */
   const PrivateRoutes = () => (
-    <>
+    <Route path="/" element={<AdminGuard />}>
       <Route path="/milestones/crud" element={<MilestonesTablePage />} />
       <Route path="/milestones/create" element={<MilestonesCreatePage />} />
       <Route path="/milestones/edit/:id" element={<MilestonesCreatePage />} />
@@ -70,8 +73,8 @@ const AuthRouter = () => {
       <Route path="/pins/crud" element={<PinsTablePage />} />
       <Route path="/pins/create" element={<PinsCreatePage />} />
       <Route path="/pins/edit/:id" element={<PinsCreatePage />} />
-      <Route path="/organization/create" element={<OrganizationCreate />} />
-    </>
+     
+    </Route>
   );
 
   const LoginRoutes = () => (

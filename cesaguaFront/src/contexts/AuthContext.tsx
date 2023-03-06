@@ -17,30 +17,35 @@ const AuthContext = createContext<
 
 const useUser = () => {
   const [user, setUser] = useContext(AuthContext) as any;
-  const navigate = useNavigate()
-
+  
   const { isValidToken } = loginService();
   const token = localStorage.getItem("token");
 
   const fetchToken = async () => {
+    if(!token){
+      setUser({rol:0});
+      return;
+    }
+
     const res = await isValidToken(token);
+
 
     if (res.status !== 200) {
       localStorage.removeItem("token");
     }
 
     const userData: any = jwt_decode(token || "");
+    
     setUser(userData.auth);
   };
 
   const logout = () => {
-    setUser({})
+    setUser({rol:0})
     localStorage.removeItem("token");
-    navigate("/login")
   }
 
   useEffect(() => {
-    token && fetchToken();
+    fetchToken();
   }, []);
 
   return { user, setUser, logout };
