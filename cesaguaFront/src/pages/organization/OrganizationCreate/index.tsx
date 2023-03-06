@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { object, string, ObjectSchema } from "yup";
 import classNames from "classnames";
+import AlertSystem from "../../../utils/AlertSystem";
 import { useRef } from "react";
 import "./index.css";
 import { CompressorImage } from "../../../utils/Compressor";
+const { promiseAlert, toastAlert } = AlertSystem();
 
 const OrganizationCreate = () => {
   const navigate = useNavigate();
@@ -63,6 +65,12 @@ const OrganizationCreate = () => {
   };
 
   const submitHandler = (event: any) => {
+
+    if (selectedImage === "") {
+      toastAlert("Debe seleccionar una imagen", "error");
+      return;
+    }
+    
     setIsSubmitted(false);
     event.preventDefault();
     console.log(data);
@@ -74,7 +82,6 @@ const OrganizationCreate = () => {
     schema
       .validate(data, { abortEarly: false })
       .then(() => {
-        alert("formulario rellenado");
         // agregar
         console.log(data);
       })
@@ -105,7 +112,7 @@ const OrganizationCreate = () => {
   };
 
   const clearImage = () => {
-    setSelectedImage(null);
+    setSelectedImage("");
     if (inputRef && inputRef.current) {
       inputRef.current.value = "";
     }
@@ -116,6 +123,8 @@ const OrganizationCreate = () => {
     files = files[0];
     if (files !== undefined) {
       if (files.size >= 5242880) {
+        clearImage();
+        toastAlert("Solo se permiten archivos de máximo 5MB", "error");
         // CustomAlert("error", "Solo se permiten archivos de máximo 5Mb");
         files = null;
         return;
@@ -140,7 +149,7 @@ const OrganizationCreate = () => {
         </div>
         <div className="row">
           <div className="col-md-6 mx-auto min-vh-100">
-            <form onSubmit={submitHandler} className=" needs-validation">
+            <form  className=" needs-validation">
               <div className="mb-4 d-flex justify-content-center ">
                 <div className="card">
                   <div
@@ -263,8 +272,9 @@ const OrganizationCreate = () => {
 
               <div className=" container d-flex gap-2">
                 <button
+                onClick={submitHandler}
                   className="text-center col-6 btn btn-save btn-lg flex-column"
-                  type="submit">
+                  type="button">
                   Aceptar
                 </button>
                 <button
