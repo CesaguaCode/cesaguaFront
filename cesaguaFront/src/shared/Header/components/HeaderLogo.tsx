@@ -10,7 +10,7 @@ const HeaderLogo = () => {
         alt="Logo de la organizacion"
         className="header-logo__img"
       />
-      <p className="header-logo__title">CESAGUA</p>
+      {/* <p className="header-logo__title">CESAGUA</p> */}
     </Link>
   );
 };

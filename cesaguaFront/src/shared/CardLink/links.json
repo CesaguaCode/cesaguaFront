@@ -1,0 +1,41 @@
+{
+  "title": "Inicio",
+  "icon": "i__index",
+  "link": "/",
+  "childs": [
+    {
+      "title": "Noticias",
+      "icon": "i__news",
+      "link": "/news"
+    },
+    {
+      "title": "Hitos",
+      "icon": "i__milestones",
+      "link": "/milestones"
+    },
+    {
+      "title": "Influencia",
+      "icon": "i__influence",
+      "link": "/pins"
+    },
+    {
+      "title": "Organizacion",
+      "icon": "i__organization",
+      "link": "/organization"
+    },
+    {
+      "title": "Contáctenos",
+      "icon": "i__contact",
+      "link": "/contact"
+    },
+    {
+      "title": "Servicios",
+      "icon": "i__services",
+      "link": "/services",
+      "childs": [
+        { "title": "Servicio1", "icon": "i__service" },
+        { "title": "Servicio2", "icon": "i__service" }
+      ]
+    }
+  ]
+}

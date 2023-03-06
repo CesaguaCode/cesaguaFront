@@ -1,0 +1,9 @@
+/* .image-container-or:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+} */
+
+.image-container-or{
+    transition: transform .2s;
+    object-fit: cover;
+}
